@@ -2,108 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>NyumbaniCare Payment</title>
+  <title>Request Home Medical Care</title>
   <style>
     body {
       background-color: #f5f5f5;
       font-family: 'Segoe UI', sans-serif;
     }
 
-    .payment-container {
-      max-width: 500px;
-      margin: 60px auto;
+    .form-container {
+      max-width: 600px;
+      margin: 50px auto;
       background: #fff;
-      padding: 25px;
+      padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    .payment-container h3 {
-      color: #25d366;
-      margin-bottom: 20px;
+    h2 {
       text-align: center;
+      color: #25d366;
+      margin-bottom: 10px;
+    }
+
+    p.description {
+      text-align: center;
+      color: #444;
+      font-size: 15px;
+      margin-bottom: 25px;
     }
 
     label {
       display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
+      margin-bottom: 6px;
+      font-weight: 600;
     }
 
-    select {
+    input, select, textarea {
       width: 100%;
       padding: 10px;
+      margin-bottom: 20px;
       border-radius: 6px;
       border: 1px solid #ccc;
-      margin-bottom: 15px;
     }
 
-    .price-display {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: #333;
-      text-align: center;
-    }
-
-    .pay-button {
+    .submit-btn {
       background-color: #25d366;
       color: white;
-      padding: 12px 20px;
-      font-size: 16px;
+      padding: 12px;
       border: none;
       border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+      font-size: 16px;
       width: 100%;
+      cursor: pointer;
     }
 
-    .pay-button:hover {
+    .submit-btn:hover {
       background-color: #1db954;
     }
   </style>
 </head>
 <body>
 
-  <div class="payment-container">
-    <h3>Choose Type of Care & Pay</h3>
+  <div class="form-container">
+    <h2>Request Home Medical Care</h2>
+    <p class="description">
+      Please fill in the details below to request home-based nursing or medical care.
+      Our qualified nurses will respond promptly. All information is kept confidential.
+    </p>
 
-    <label for="careType">Type of Care:</label>
-    <select id="careType" onchange="updatePrice()">
-      <option value="general">General Checkup - $10</option>
-      <option value="nursing">Nursing Service - $20</option>
-      <option value="physio">Physiotherapy - $25</option>
-    </select>
+    <form action="mailto:abedanyakundi1@gmail.com" method="POST" enctype="text/plain">
+      <label for="fullName">Full name / Jina kamili *</label>
+      <input type="text" id="fullName" name="Full Name" required>
 
-    <div class="price-display" id="priceDisplay">Total: $10</div>
+      <label for="phone">Phone number / Mawasiliano *</label>
+      <input type="tel" id="phone" name="Phone Number" required>
 
-    <button class="pay-button" onclick="redirectToPayment()">Pay Now</button>
+      <label for="location">Location / Mahali *</label>
+      <input type="text" id="location" name="Location" required>
+
+      <label for="careType">Type of care needed / Huduma unayoihitaji *</label>
+      <select id="careType" name="Care Type" required>
+        <option value="Neonatal Care - $15">Neonatal Care - $15</option>
+        <option value="Maternity Care - $20">Maternity Care - $20</option>
+        <option value="General Nursing - $10">General Nursing - $10</option>
+        <option value="Pediatrics - $18">Pediatrics - $18</option>
+        <option value="Geriatric Care - $22">Geriatric Care - $22</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="condition">Condition of the patient / Hali ya mgonjwa *</label>
+      <select id="condition" name="Patient Condition" required>
+        <option value="Critical / Mahututi">Critical / Mahututi</option>
+        <option value="Fair / Siyo Mahututi">Fair / Siyo Mahututi</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <button type="submit" class="submit-btn">Submit Request</button>
+    </form>
   </div>
-
-  <script>
-    const prices = {
-      general: 10,
-      nursing: 20,
-      physio: 25
-    };
-
-    const stripeLinks = {
-      general: "https://buy.stripe.com/test_1234GENERAL",
-      nursing: "https://buy.stripe.com/test_5678NURSE",
-      physio: "https://buy.stripe.com/test_9012PHYSIO"
-    };
-
-    function updatePrice() {
-      const careType = document.getElementById("careType").value;
-      const price = prices[careType];
-      document.getElementById("priceDisplay").textContent = `Total: $${price}`;
-    }
-
-    function redirectToPayment() {
-      const careType = document.getElementById("careType").value;
-      window.location.href = stripeLinks[careType];
-    }
-  </script>
 
 </body>
 </html>
