@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register as a Nurse - NyumbaniCare</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+    h2 {
+      color: #25d366;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, textarea {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #25d366;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1ebd59;
+    }
+  </style>
+</head>
+<body>
+  <h2>Register as a Nurse</h2>
+  <form action="https://formsubmit.co/your-email@example.com" method="POST">
+    <input type="text" name="Full Name" placeholder="Full Name" required>
+    <input type="email" name="Email" placeholder="Email Address" required>
+    <input type="tel" name="Phone" placeholder="Phone Number" required>
+    <textarea name="Experience" placeholder="Briefly describe your experience/qualifications" rows="5" required></textarea>
+    <button type="submit">Submit Registration</button>
+  </form>
+</body>
+  <script>
+  function registerNurse() {
+    // Here you can handle the registration – for now, just show a message or log
+    alert("Nurse registration submitted!");
+  }
+  </script>
+</html>
