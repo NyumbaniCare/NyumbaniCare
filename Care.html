@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NyumbaniCare Payment</title>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .payment-container {
+      max-width: 500px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .payment-container h3 {
+      color: #25d366;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    }
+
+    .price-display {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+      text-align: center;
+    }
+
+    .pay-button {
+      background-color: #25d366;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .pay-button:hover {
+      background-color: #1db954;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="payment-container">
+    <h3>Choose Type of Care & Pay</h3>
+
+    <label for="careType">Type of Care:</label>
+    <select id="careType" onchange="updatePrice()">
+      <option value="general">General Checkup - $10</option>
+      <option value="nursing">Nursing Service - $20</option>
+      <option value="physio">Physiotherapy - $25</option>
+    </select>
+
+    <div class="price-display" id="priceDisplay">Total: $10</div>
+
+    <button class="pay-button" onclick="redirectToPayment()">Pay Now</button>
+  </div>
+
+  <script>
+    const prices = {
+      general: 10,
+      nursing: 20,
+      physio: 25
+    };
+
+    const stripeLinks = {
+      general: "https://buy.stripe.com/test_1234GENERAL",
+      nursing: "https://buy.stripe.com/test_5678NURSE",
+      physio: "https://buy.stripe.com/test_9012PHYSIO"
+    };
+
+    function updatePrice() {
+      const careType = document.getElementById("careType").value;
+      const price = prices[careType];
+      document.getElementById("priceDisplay").textContent = `Total: $${price}`;
+    }
+
+    function redirectToPayment() {
+      const careType = document.getElementById("careType").value;
+      window.location.href = stripeLinks[careType];
+    }
+  </script>
+
+</body>
+</html>
