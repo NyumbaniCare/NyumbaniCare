@@ -76,7 +76,7 @@
   <a href="#about">About Us</a>
   <a href="#request">Request Care</a>
   <a href="#contact">Contact</a>
-  <a href="#contact">register</a>
+  <a href="#register-nurse">register</a>
   
 </nav>
 
@@ -111,6 +111,20 @@
     <button type="submit">Send via Email</button>
   </form>
   </section>
+
+  <a href="#register-nurse">Nurse Registration</a>
+</nav>
+
+<section id="register-nurse">
+  <h2>Register as a Nurse</h2>
+  <form onsubmit="event.preventDefault(); registerNurse();">
+    <input type="text" id="nurseName" placeholder="Full Name" required>
+    <input type="email" id="nurseEmail" placeholder="Email" required>
+    <input type="tel" id="nursePhone" placeholder="Phone Number" required>
+    <textarea id="nurseExperience" placeholder="Experience / Qualifications" required></textarea>
+    <button type="submit">Register</button>
+  </form>
+</section>
   <form id="emailForm" action="https://formsubmit.co/your-email@example.com" method="POST" style="display: none;">
   <input type="hidden" name="Name" id="formName">
   <input type="hidden" name="Phone" id="formPhone">
@@ -146,6 +160,12 @@
     document.getElementById("emailForm").submit();
   }
 </script>
+  <script>
+  function registerNurse() {
+    // Here you can handle the registration – for now, just show a message or log
+    alert("Nurse registration submitted!");
+  }
+  </script>
 
 </body>
 </html>
