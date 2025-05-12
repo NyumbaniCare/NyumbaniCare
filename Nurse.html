@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     nav{
       background: #004d3d;
@@ -29,30 +30,173 @@
 
 <nav>
   <a href="index.html">Home</a>
-  <a href="#about">About Us</a>
+  <a href="About.html">About Us</a>
   <a href="Care.html">Request Care</a>
   <a href="#contact">Contact</a>
   <a href="Nurse.html">register</a>
   
 </nav>
   <style>
-  <title>Nurse Registration - NyumbaniCare</title>
+  <title>NyumbaniCare Nurse Registration</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f5f4;
+      color: #333;
     }
-    iframe {
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+    }
+
+    h1 {
+      color: #007b5e;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    p.description {
+      text-align: center;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin: 20px 0 8px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
       width: 100%;
-      height: 1000px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    input[type="file"] {
+      margin-top: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .checkbox-group,
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .checkbox-group label,
+    .radio-group label {
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .submit-btn {
+      background-color: #007b5e;
+      color: white;
+      padding: 14px 24px;
       border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #005845;
+    }
+
+    @media (max-width: 600px) {
+      .checkbox-group, .radio-group {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-  <h2>Register as a Nurse</h2>
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScp9VTwUhnCLcV7ffs4wgM5tkRWYDBW9FyTYcBHL7fZaFzFPQ/viewform?embedded=true" loading="lazy">
-    Loading…
-  </iframe>
+
+  <div class="container">
+    <h1>NyumbaniCare Nurse Registration</h1>
+    <p class="description">Please fill in the details below to register as a nurse for NyumbaniCare. We look forward to working with you!</p>
+    
+    <form>
+      <div class="form-group">
+        <label for="fullname">Full Name *</label>
+        <input type="text" id="fullname" name="fullname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+
+      <div class="form-group">
+        <label>Qualifications *</label>
+        <div class="radio-group">
+          <label><input type="radio" name="qualification" value="Certificate" required> Certificate</label>
+          <label><input type="radio" name="qualification" value="Diploma"> Diploma</label>
+          <label><input type="radio" name="qualification" value="Degree"> Degree</label>
+          <label><input type="radio" name="qualification" value="Masters"> Masters</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Specialization *</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="specialization" value="Neonatal Care"> Neonatal Care</label>
+          <label><input type="checkbox" name="specialization" value="Maternity Care"> Maternity Care</label>
+          <label><input type="checkbox" name="specialization" value="General Nursing"> General Nursing</label>
+          <label><input type="checkbox" name="specialization" value="Pediatrics"> Pediatrics</label>
+          <label><input type="checkbox" name="specialization" value="Geriatric Care"> Geriatric Care</label>
+          <label><input type="checkbox" name="specialization" value="Physiotherapy"> Physiotherapy</label>
+          <label><input type="checkbox" name="specialization" value="Mental Health"> Mental Health</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Availability *</label>
+        <div class="radio-group">
+          <label><input type="radio" name="availability" value="Full Time" required> Full Time</label>
+          <label><input type="radio" name="availability" value="Part Time"> Part Time</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Proof of Profession *</label>
+        <input type="file" name="nursing_id" accept=".jpg,.png,.pdf" required> Upload Nursing ID (Students)<br><br>
+        <input type="file" name="nursing_certificate" accept=".jpg,.png,.pdf" required> Upload Nursing Certificate<br><br>
+        <input type="file" name="nursing_license" accept=".jpg,.png,.pdf" required> Upload Nursing License<br><br>
+        <label>(Optional)</label>
+        <input type="file" name="resume" accept=".pdf,.doc,.docx"> Upload Resume or Recommendation Letter
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Registration</button>
+    </form>
+  </div>
+
 </body>
-</html>
+                   </html>
