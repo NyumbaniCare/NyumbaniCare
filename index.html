@@ -76,6 +76,8 @@
   <a href="#about">About Us</a>
   <a href="#request">Request Care</a>
   <a href="#contact">Contact</a>
+  <a href="#contact">register</a>
+  
 </nav>
 
 <section id="home">
@@ -107,7 +109,12 @@
       <label>Type of Care Needed</label>
       <textarea id="careType" rows="4" required></textarea>
     </div>
-    <button type="button" onclick="sendWhatsApp()">Send via WhatsApp</button>
+    <form id="emailForm" action="https://formsubmit.co/your-Carenyumbani@gmail.com" method="POST" style="display: none;">
+  <input type="hidden" name="Name" id="formName">
+  <input type="hidden" name="Phone" id="formPhone">
+  <input type="hidden" name="Location" id="formLocation">
+  <input type="hidden" name="Care_Type" id="formCareType">
+    </form>
   </form>
 </section>
 
@@ -123,16 +130,21 @@
 </footer>
 
 <script>
-  function sendWhatsApp() {
+  function sendEmail() {
+    // Get values from visible inputs
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
     const location = document.getElementById("location").value;
     const careType = document.getElementById("careType").value;
-    
-    const message = `Hello, I would like to request home medical care:\n\nName: ${name}\nPhone: ${phone}\nLocation: ${location}\nCare Needed: ${careType}`;
-    
-    const url = `https://wa.me/255611069297?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
+
+    // Fill the hidden form fields
+    document.getElementById("formName").value = name;
+    document.getElementById("formPhone").value = phone;
+    document.getElementById("formLocation").value = location;
+    document.getElementById("formCareType").value = careType;
+
+    // Submit the form
+    document.getElementById("emailForm").submit();
   }
 </script>
 
