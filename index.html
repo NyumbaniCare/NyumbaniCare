@@ -109,6 +109,13 @@
       <label>Type of Care Needed</label>
       <textarea id="careType" rows="4" required></textarea>
     </div>
+    <form onsubmit="event.preventDefault(); sendEmail();">
+  <input type="text" id="name" placeholder="Your Name" required>
+  <input type="tel" id="phone" placeholder="Your Phone" required>
+  <input type="text" id="location" placeholder="Your Location" required>
+  <input type="text" id="careType" placeholder="Type of Care Needed" required>
+  <button type="submit">Send via Email</button>
+    </form>
     <form id="emailForm" action="https://formsubmit.co/your-Carenyumbani@gmail.com" method="POST" style="display: none;">
   <input type="hidden" name="Name" id="formName">
   <input type="hidden" name="Phone" id="formPhone">
