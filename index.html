@@ -3,165 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NyumbaniCare - Home Medical Services</title>
+  <title>NyumbaniCare</title>
   <style>
     body {
-  font-family: Arial, sans-serif;
-  background-image: url('https://images.unsplash.com/photo-1588776814546-ec7ee0f3f0b7?auto=format&fit=crop&w=1950&q=80');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 20px;
-}
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1588776814546-ec7ee0f3f0b7?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
 
-.container {
-  max-width: 700px;
-  margin: auto;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-    header {
-      background-color: #007b5e;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
     nav {
-      background: #004d3d;
+      background: #00695c;
+      padding: 15px 20px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
     }
+
     nav a {
-      color: white;
-      padding: 14px 20px;
+      color: #fff;
+      margin-left: 15px;
       text-decoration: none;
-      display: inline-block;
+      font-weight: bold;
     }
-    nav a:hover {
-      background-color: #006a56;
-    }
-    section {
-      padding: 20px;
-    }
-    footer {
-      background: #007b5e;
-      color: white;
+
+    .hero {
       text-align: center;
-      padding: 10px;
+      padding: 100px 20px;
+      background: rgba(0,0,0,0.6);
+      min-height: 80vh;
     }
-    .form-group {
-      margin-bottom: 15px;
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #00e676;
     }
-    input, textarea {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+
+    .hero p {
+      font-size: 20px;
+      max-width: 600px;
+      margin: 0 auto;
     }
-    button {
-      background-color: #007b5e;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #005c47;
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #004d40;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>NyumbaniCare</h1>
-  <p>We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
-</header>
-
-<nav>
-  <a href="index.html">Home</a>
-  <a href="About.html">About Us</a>
-  <a href="Care.html">Request Care</a>
-  <a href="#contact">Contact</a>
-  <a href="Nurse.html">register</a>
-  
-</nav>
-
-<section id="home">
-  <h2>Welcome to NyumbaniCare</h2>
-  <p>We provide professional home-based medical services across Tanzania. Skip the hospital line — let our team come to you.</p>
-</section>
-
-<section id="about">
-  <h2>About Us</h2>
-  <p>NyumbaniCare is a Tanzanian home care solution built to serve people who cannot or prefer not to visit hospitals. We aim to make quality healthcare accessible and convenient for everyone, right at home.</p>
-</section>
-  <section id="request">
-  <h2>Request Home Medical Care</h2>
-  <form onsubmit="event.preventDefault(); sendEmail();">
-    <div class="form-group">
-      <label>Full Name</label>
-      <input type="text" id="name" required />
+  <nav>
+    <div><strong>NyumbaniCare</strong></div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="request.html">Request Care</a>
+      <a href="register.html">Register</a>
     </div>
-    <div class="form-group">
-      <label>Phone Number</label>
-      <input type="text" id="phone" required />
-    </div>
-    <div class="form-group">
-      <label>Location</label>
-      <input type="text" id="location" required />
-    </div>
-    <div class="form-group">
-      <label>Type of Care Needed</label>
-      <textarea id="careType" rows="4" required></textarea>
-    </div>
-    <button type="submit">Send via Email</button>
-  </form>
+  </nav>
 
-  <form id="emailForm" action="https://formsubmit.co/your-email@example.com" method="POST" style="display: none;">
-  <input type="hidden" name="Name" id="formName">
-  <input type="hidden" name="Phone" id="formPhone">
-  <input type="hidden" name="Location" id="formLocation">
-  <input type="hidden" name="Care_Type" id="formCareType">
-  </form>
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p><strong>Phone / WhatsApp:</strong> <a href="https://wa.me/255611069297" target="_blank">+255 611 069 297</a></p>
-  <p><strong>Email:</strong> <a href="mailto:carenyumbani@gmail.com">carenyumbani@gmail.com</a></p>
-  <p><strong>Location:</strong> Tanzania</p>
-</section>
+  <section class="hero">
+    <h1>Welcome to NyumbaniCare</h1>
+    <p>We bring professional, home-based medical services to your doorstep. Skip the hospital lines — our qualified team comes directly to you, anywhere in Tanzania.</p>
+  </section>
 
-<footer>
-  &copy; 2025 NyumbaniCare. All rights reserved.
-</footer>
-
-<script>
-  function sendEmail() {
-    // Get values from visible inputs
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const location = document.getElementById("location").value;
-    const careType = document.getElementById("careType").value;
-
-    // Fill the hidden form fields
-    document.getElementById("formName").value = name;
-    document.getElementById("formPhone").value = phone;
-    document.getElementById("formLocation").value = location;
-    document.getElementById("formCareType").value = careType;
-
-    // Submit the form
-    document.getElementById("emailForm").submit();
-  }
-</script>
-  <script>
-  function registerNurse() {
-    // Here you can handle the registration – for now, just show a message or log
-    alert("Nurse registration submitted!");
-  }
-  </script>
+  <footer>
+    &copy; 2025 NyumbaniCare. All rights reserved.
+  </footer>
 
 </body>
 </html>
