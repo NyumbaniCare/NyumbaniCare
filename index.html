@@ -89,10 +89,9 @@
   <h2>About Us</h2>
   <p>NyumbaniCare is a Tanzanian home care solution built to serve people who cannot or prefer not to visit hospitals. We aim to make quality healthcare accessible and convenient for everyone, right at home.</p>
 </section>
-
-<section id="request">
+  <section id="request">
   <h2>Request Home Medical Care</h2>
-  <form id="careForm">
+  <form onsubmit="event.preventDefault(); sendEmail();">
     <div class="form-group">
       <label>Full Name</label>
       <input type="text" id="name" required />
@@ -109,22 +108,15 @@
       <label>Type of Care Needed</label>
       <textarea id="careType" rows="4" required></textarea>
     </div>
-    <form onsubmit="event.preventDefault(); sendEmail();">
-  <input type="text" id="name" placeholder="Your Name" required>
-  <input type="tel" id="phone" placeholder="Your Phone" required>
-  <input type="text" id="location" placeholder="Your Location" required>
-  <input type="text" id="careType" placeholder="Type of Care Needed" required>
-  <button type="submit">Send via Email</button>
-    </form>
-    <form id="emailForm" action="https://formsubmit.co/your-Carenyumbani@gmail.com" method="POST" style="display: none;">
+    <button type="submit">Send via Email</button>
+  </form>
+  </section>
+  <form id="emailForm" action="https://formsubmit.co/your-email@example.com" method="POST" style="display: none;">
   <input type="hidden" name="Name" id="formName">
   <input type="hidden" name="Phone" id="formPhone">
   <input type="hidden" name="Location" id="formLocation">
   <input type="hidden" name="Care_Type" id="formCareType">
-    </form>
   </form>
-</section>
-
 <section id="contact">
   <h2>Contact Us</h2>
   <p><strong>Phone / WhatsApp:</strong> <a href="https://wa.me/255611069297" target="_blank">+255 611 069 297</a></p>
