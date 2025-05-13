@@ -6,7 +6,6 @@
   <title>NyumbaniCare | Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
   <style>
     :root {
       --main-orange: #ff7a00;
@@ -15,17 +14,17 @@
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      display: flex;
-      min-height: 100vh;
       background-color: var(--light-orange);
       color: var(--text-dark);
+      display: flex;
+      min-height: 100vh;
     }
 
     /* Sidebar */
@@ -38,27 +37,22 @@
       padding: 20px;
       position: fixed;
       height: 100vh;
-      overflow: auto;
-      box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+      overflow-y: auto;
     }
 
-    .sidebar .logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .logo {
+      text-align: center;
       margin-bottom: 30px;
-      flex-direction: column;
     }
 
-    .sidebar .logo img {
+    .logo img {
       width: 60px;
       margin-bottom: 10px;
     }
 
     .sidebar h2 {
       font-size: 1.5rem;
-      margin-bottom: 40px;
-      text-align: center;
+      margin-bottom: 30px;
     }
 
     .sidebar a {
@@ -88,9 +82,7 @@
       padding: 40px;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      margin-bottom: 40px;
       text-align: center;
-      animation: fadeIn 1s ease-in-out;
     }
 
     .hero h1 {
@@ -105,6 +97,7 @@
     }
 
     .features {
+      margin-top: 40px;
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
@@ -119,7 +112,6 @@
       text-align: center;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s ease;
-      animation: slideUp 0.6s ease forwards;
     }
 
     .feature-card:hover {
@@ -150,37 +142,31 @@
       color: #666;
     }
 
+    /* Responsive: make sidebar collapsible */
     @media (max-width: 768px) {
       .sidebar {
+        position: relative;
         width: 100%;
         height: auto;
-        position: relative;
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: space-around;
-        padding: 10px;
       }
 
       .main {
         margin-left: 0;
-        margin-top: 20px;
         padding: 20px;
+      }
+
+      .logo {
+        flex-basis: 100%;
+        text-align: center;
       }
 
       .features {
         flex-direction: column;
         align-items: center;
       }
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -228,4 +214,4 @@
   </div>
 
 </body>
-    </html
+      </html>
