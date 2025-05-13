@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NyumbaniCare | Home</title>
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
+    :root {
+      --main-orange: #ff7a00;
+      --light-orange: #fff4eb;
+      --text-dark: #333;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -17,65 +22,84 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f4f9f8;
-      color: #333;
-      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+      background-color: var(--light-orange);
+      color: var(--text-dark);
     }
 
-    header {
-      background-color: #004d3d;
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background-color: var(--main-orange);
       color: white;
-      padding: 40px 20px;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      position: fixed;
+      height: 100vh;
+      overflow: auto;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.1);
     }
 
-    header h1 {
-      font-size: 2.5rem;
+    .sidebar .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      flex-direction: column;
+    }
+
+    .sidebar .logo img {
+      width: 60px;
       margin-bottom: 10px;
     }
 
-    header p {
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto;
+    .sidebar h2 {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+      text-align: center;
     }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      background-color: #006a56;
-      padding: 14px 0;
-    }
-
-    nav a {
+    .sidebar a {
       color: white;
       text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease, background-color 0.3s ease;
-      padding: 8px 16px;
+      padding: 12px 20px;
+      margin: 8px 0;
       border-radius: 5px;
+      display: block;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
     }
 
-    nav a:hover {
-      background-color: #004d3d;
+    .sidebar a:hover {
+      background-color: #e26700;
+    }
+
+    /* Main content */
+    .main {
+      margin-left: 240px;
+      flex: 1;
+      padding: 40px 30px;
     }
 
     .hero {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
       text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(135deg, #ffffff, #e6f5f2);
+      animation: fadeIn 1s ease-in-out;
     }
 
-    .hero h2 {
-      font-size: 2rem;
-      color: #007b5e;
-      margin-bottom: 20px;
+    .hero h1 {
+      font-size: 2.2rem;
+      color: var(--main-orange);
+      margin-bottom: 10px;
     }
 
     .hero p {
-      max-width: 700px;
-      margin: 0 auto;
       font-size: 1.1rem;
       color: #555;
     }
@@ -83,29 +107,34 @@
     .features {
       display: flex;
       flex-wrap: wrap;
+      gap: 20px;
       justify-content: center;
-      gap: 30px;
-      padding: 60px 20px;
-      background-color: #fff;
     }
 
     .feature-card {
-      background: #f0f5f4;
+      background-color: white;
       border-radius: 10px;
       padding: 30px;
-      text-align: center;
       width: 280px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s ease;
+      animation: slideUp 0.6s ease forwards;
     }
 
     .feature-card:hover {
       transform: translateY(-5px);
     }
 
+    .feature-card i {
+      font-size: 2rem;
+      color: var(--main-orange);
+      margin-bottom: 15px;
+    }
+
     .feature-card h3 {
+      color: var(--main-orange);
       margin-bottom: 10px;
-      color: #007b5e;
       font-size: 1.2rem;
     }
 
@@ -115,71 +144,88 @@
     }
 
     footer {
-      background-color: #004d3d;
-      color: white;
+      margin-top: 40px;
       text-align: center;
-      padding: 20px 10px;
       font-size: 0.9rem;
+      color: #666;
     }
 
     @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px;
+      }
+
+      .main {
+        margin-left: 0;
+        margin-top: 20px;
+        padding: 20px;
+      }
+
       .features {
         flex-direction: column;
         align-items: center;
       }
+    }
 
-      .hero h2 {
-        font-size: 1.8rem;
-      }
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-      nav {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px 0;
-      }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>NyumbaniCare</h1>
-  <p>We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
-</header>
-
-<nav>
-  <a href="index.html">Home</a>
-  <a href="About.html">About Us</a>
-  <a href="Care.html">Request Care</a>
-  <a href="#contact">Contact</a>
-  <a href="Nurse.html">Register</a>
-</nav>
-
-<section class="hero">
-  <h2>Your Health. Our Priority.</h2>
-  <p>NyumbaniCare connects professional nurses and caregivers to homes and communities, ensuring comfort and dignity in health recovery and elderly care.</p>
-</section>
-
-<section class="features">
-  <div class="feature-card">
-    <h3>Licensed Nurses</h3>
-    <p>All caregivers are verified and licensed for peace of mind and professionalism.</p>
+  <div class="sidebar">
+    <div class="logo">
+      <img src="https://img.icons8.com/ios-filled/100/ffffff/nurse-female.png" alt="NyumbaniCare Logo">
+      <h2>NyumbaniCare</h2>
+    </div>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="About.html"><i class="fas fa-info-circle"></i> About Us</a>
+    <a href="Care.html"><i class="fas fa-hand-holding-medical"></i> Request Care</a>
+    <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="Nurse.html"><i class="fas fa-user-nurse"></i> Register</a>
   </div>
 
-  <div class="feature-card">
-    <h3>Affordable Services</h3>
-    <p>Choose from flexible care plans that suit your budget and health needs.</p>
-  </div>
+  <div class="main">
+    <section class="hero">
+      <h1>Your Health. Our Priority.</h1>
+      <p>We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
+    </section>
 
-  <div class="feature-card">
-    <h3>Home Visits</h3>
-    <p>Get expert medical attention at home — from check-ups to post-surgery care.</p>
-  </div>
-</section>
+    <section class="features">
+      <div class="feature-card">
+        <i class="fas fa-id-badge"></i>
+        <h3>Verified Nurses</h3>
+        <p>All caregivers are certified and licensed, ensuring your safety and peace of mind.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-hand-holding-usd"></i>
+        <h3>Affordable Plans</h3>
+        <p>Flexible services tailored to your family's healthcare needs and budget.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-house-user"></i>
+        <h3>Home-based Care</h3>
+        <p>Receive personalized care and medical attention from the comfort of your home.</p>
+      </div>
+    </section>
 
-<footer>
-  &copy; 2025 NyumbaniCare. All rights reserved.
-</footer>
+    <footer>
+      &copy; 2025 NyumbaniCare. All rights reserved.
+    </footer>
+  </div>
 
 </body>
-    </html>
+    </html
