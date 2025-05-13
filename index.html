@@ -1,82 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NyumbaniCare</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NyumbaniCare | Home</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-size: cover;
-      color: #fff;
-      background-image: url('hosi.jpeg');
-    }
-    .hero {
-  background-image: url('hosi.jpeg');
+      padding: 0;
     }
 
-    nav {
-      background: #00695c;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f9f8;
+      color: #333;
+      line-height: 1.6;
     }
 
-    nav a {
-      color: #fff;
-      margin-left: 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .hero {
+    header {
+      background-color: #004d3d;
+      color: white;
+      padding: 40px 20px;
       text-align: center;
-      padding: 100px 20px;
-      background: rgba(0,0,0,0.6);
-      min-height: 80vh;
     }
 
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-      color: #00e676;
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
 
-    .hero p {
-      font-size: 20px;
+    header p {
+      font-size: 1.1rem;
       max-width: 600px;
       margin: 0 auto;
     }
 
-    footer {
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: #006a56;
+      padding: 14px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease, background-color 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      background-color: #004d3d;
+    }
+
+    .hero {
       text-align: center;
-      padding: 15px;
-      background: #004d40;
-      font-size: 14px;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #ffffff, #e6f5f2);
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      color: #007b5e;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 60px 20px;
+      background-color: #fff;
+    }
+
+    .feature-card {
+      background: #f0f5f4;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      width: 280px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-card h3 {
+      margin-bottom: 10px;
+      color: #007b5e;
+      font-size: 1.2rem;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    footer {
+      background-color: #004d3d;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+      }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div><strong>NyumbaniCare</strong></div>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="Care.html">Request Care</a>
-      <a href="register.html">Register</a>
-    </div>
-  </nav>
+<header>
+  <h1>NyumbaniCare</h1>
+  <p>We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
+</header>
 
-  <section class="hero">
-    <h1>Welcome to NyumbaniCare</h1>
-    <p>We bring professional, home-based medical services to your doorstep. Skip the hospital lines — our qualified team comes directly to you, anywhere in Tanzania.</p>
-  </section>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="About.html">About Us</a>
+  <a href="Care.html">Request Care</a>
+  <a href="#contact">Contact</a>
+  <a href="Nurse.html">Register</a>
+</nav>
 
-  <footer>
-    &copy; 2025 NyumbaniCare. All rights reserved.
-  </footer>
+<section class="hero">
+  <h2>Your Health. Our Priority.</h2>
+  <p>NyumbaniCare connects professional nurses and caregivers to homes and communities, ensuring comfort and dignity in health recovery and elderly care.</p>
+</section>
+
+<section class="features">
+  <div class="feature-card">
+    <h3>Licensed Nurses</h3>
+    <p>All caregivers are verified and licensed for peace of mind and professionalism.</p>
+  </div>
+
+  <div class="feature-card">
+    <h3>Affordable Services</h3>
+    <p>Choose from flexible care plans that suit your budget and health needs.</p>
+  </div>
+
+  <div class="feature-card">
+    <h3>Home Visits</h3>
+    <p>Get expert medical attention at home — from check-ups to post-surgery care.</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 NyumbaniCare. All rights reserved.
+</footer>
 
 </body>
-</html>
+    </html>
