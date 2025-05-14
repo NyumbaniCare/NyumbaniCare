@@ -5,47 +5,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NyumbaniCare Nurse Registration</title>
   <style>
-    nav {
-      background: #2c3e50;
-      display: flex;
-      justify-content: center;
-    }
-    nav a {
-      color: white;
-      padding: 14px 20px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    nav a:hover {
-      background-color: #1abc9c;
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #f0f5f4;
-      color: #333;
+      display: flex;
+      min-height: 100vh;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 50px auto;
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    /* Top Navigation */
+    nav {
+      background: #004d3d;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: #006a56;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background-color: #00382d;
+      color: white;
+      padding-top: 30px;
+      min-height: 100vh;
+    }
+
+    .sidebar h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background-color: #005845;
+    }
+
+    .content {
+      flex: 1;
       padding: 40px;
     }
 
-    h1 {
-      color: #007b5e;
+    header {
+      width: 100%;
       text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      color: #004d3d;
+    }
+
+    h1 {
       margin-bottom: 10px;
     }
 
-    p.description {
-      text-align: center;
+    .description {
       color: #555;
       margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
     }
 
     label {
@@ -68,10 +111,6 @@
 
     input[type="file"] {
       margin-top: 10px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
     }
 
     .checkbox-group,
@@ -106,140 +145,123 @@
       background-color: #005845;
     }
 
-    #fileError {
-      color: red;
-      display: none;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .file-preview {
-      font-size: 0.95rem;
-      color: #444;
-      margin: 5px 0 15px;
-    }
-
-    @media (max-width: 600px) {
-      .checkbox-group, .radio-group {
+    @media (max-width: 768px) {
+      body {
         flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+      }
+
+      .content {
+        padding: 20px;
       }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>NyumbaniCare</h1>
-  <p style="text-align:center;">We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
-</header>
+  <div class="sidebar">
+    <h3>Nurse Panel</h3>
+    <a href="#">Dashboard</a>
+    <a href="#">My Profile</a>
+    <a href="#">Help</a>
+    <a href="#">Settings</a>
+  </div>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="About.html">About Us</a>
-  <a href="Care.html">Request Care</a>
-  <a href="#contact">Contact</a>
-  <a href="Nurse.html">Register</a>
-</nav>
+  <div class="main-content">
+    <header>
+      <h1>NyumbaniCare</h1>
+      <p>We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
+    </header>
 
-<div class="container">
-  <h1>NyumbaniCare Nurse Registration</h1>
-  <p class="description">Please fill in the details below to register as a nurse for NyumbaniCare. We look forward to working with you!</p>
-  
-  <form id="nurseForm">
-    <div class="form-group">
-      <label for="fullname">Full Name *</label>
-      <input type="text" id="fullname" name="fullname" required />
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="About.html">About Us</a>
+      <a href="Care.html">Request Care</a>
+      <a href="#contact">Contact</a>
+      <a href="Nurse.html" class="active">Register</a>
+    </nav>
+
+    <div class="content">
+      <h2 style="color: #007b5e;">Nurse Registration</h2>
+      <p class="description">Please fill in the details below to register as a nurse for NyumbaniCare. We look forward to working with you!</p>
+
+      <form id="nurseForm">
+        <div class="form-group">
+          <label for="fullname">Full Name *</label>
+          <input type="text" id="fullname" name="fullname" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+
+        <div class="form-group">
+          <label>Qualifications *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="qualification" value="Certificate" required /> Certificate</label>
+            <label><input type="radio" name="qualification" value="Diploma" /> Diploma</label>
+            <label><input type="radio" name="qualification" value="Degree" /> Degree</label>
+            <label><input type="radio" name="qualification" value="Masters" /> Masters</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Specialization *</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="specialization" value="Neonatal Care" /> Neonatal Care</label>
+            <label><input type="checkbox" name="specialization" value="Maternity Care" /> Maternity Care</label>
+            <label><input type="checkbox" name="specialization" value="General Nursing" /> General Nursing</label>
+            <label><input type="checkbox" name="specialization" value="Pediatrics" /> Pediatrics</label>
+            <label><input type="checkbox" name="specialization" value="Geriatric Care" /> Geriatric Care</label>
+            <label><input type="checkbox" name="specialization" value="Physiotherapy" /> Physiotherapy</label>
+            <label><input type="checkbox" name="specialization" value="Mental Health" /> Mental Health</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Availability *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="availability" value="Full Time" required /> Full Time</label>
+            <label><input type="radio" name="availability" value="Part Time" /> Part Time</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Proof of Profession *</label>
+          <input type="file" id="nursing_id" name="nursing_id" accept=".jpg,.png,.pdf" /><br> Nursing ID (for students)<br><br>
+          <input type="file" id="nursing_certificate" name="nursing_certificate" accept=".jpg,.png,.pdf" /><br> Nursing Certificate<br><br>
+          <input type="file" id="nursing_license" name="nursing_license" accept=".jpg,.png,.pdf" /><br> Nursing License<br><br>
+          <label>(Optional)</label>
+          <input type="file" name="resume" accept=".pdf,.doc,.docx" /> Upload Resume or Recommendation Letter
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Registration</button>
+      </form>
     </div>
+  </div>
 
-    <div class="form-group">
-      <label for="email">Email Address *</label>
-      <input type="email" id="email" name="email" required />
-    </div>
+  <script>
+    document.getElementById("nurseForm").addEventListener("submit", function (event) {
+      const id = document.getElementById("nursing_id").files.length;
+      const cert = document.getElementById("nursing_certificate").files.length;
+      const license = document.getElementById("nursing_license").files.length;
 
-    <div class="form-group">
-      <label for="phone">Phone Number *</label>
-      <input type="tel" id="phone" name="phone" required />
-    </div>
-
-    <div class="form-group">
-      <label>Qualifications *</label>
-      <div class="radio-group">
-        <label><input type="radio" name="qualification" value="Certificate" required /> Certificate</label>
-        <label><input type="radio" name="qualification" value="Diploma" /> Diploma</label>
-        <label><input type="radio" name="qualification" value="Degree" /> Degree</label>
-        <label><input type="radio" name="qualification" value="Masters" /> Masters</label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>Specialization *</label>
-      <div class="checkbox-group">
-        <label><input type="checkbox" name="specialization" value="Neonatal Care" /> Neonatal Care</label>
-        <label><input type="checkbox" name="specialization" value="Maternity Care" /> Maternity Care</label>
-        <label><input type="checkbox" name="specialization" value="General Nursing" /> General Nursing</label>
-        <label><input type="checkbox" name="specialization" value="Pediatrics" /> Pediatrics</label>
-        <label><input type="checkbox" name="specialization" value="Geriatric Care" /> Geriatric Care</label>
-        <label><input type="checkbox" name="specialization" value="Physiotherapy" /> Physiotherapy</label>
-        <label><input type="checkbox" name="specialization" value="Mental Health" /> Mental Health</label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>Availability *</label>
-      <div class="radio-group">
-        <label><input type="radio" name="availability" value="Full Time" required /> Full Time</label>
-        <label><input type="radio" name="availability" value="Part Time" /> Part Time</label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>Proof of Profession * (Upload at least one)</label>
-      <input type="file" id="nursing_id" name="nursing_id" accept=".jpg,.png,.pdf" onchange="showFileName(this)" />
-      <div class="file-preview" id="idPreview"></div>
-
-      <input type="file" id="nursing_certificate" name="nursing_certificate" accept=".jpg,.png,.pdf" onchange="showFileName(this)" />
-      <div class="file-preview" id="certPreview"></div>
-
-      <input type="file" id="nursing_license" name="nursing_license" accept=".jpg,.png,.pdf" onchange="showFileName(this)" />
-      <div class="file-preview" id="licensePreview"></div>
-
-      <label>(Optional)</label>
-      <input type="file" name="resume" accept=".pdf,.doc,.docx" onchange="showFileName(this)" />
-      <div class="file-preview" id="resumePreview"></div>
-
-      <p id="fileError">Please upload at least one document: ID, Certificate, or License.</p>
-    </div>
-
-    <button type="submit" class="submit-btn">Submit Registration</button>
-  </form>
-</div>
-
-<script>
-  const showFileName = (input) => {
-    const previewId = input.id + 'Preview';
-    const previewDiv = document.getElementById(previewId);
-    if (input.files.length > 0) {
-      previewDiv.textContent = 'Selected: ' + input.files[0].name;
-    } else {
-      previewDiv.textContent = '';
-    }
-  };
-
-  document.getElementById("nurseForm").addEventListener("submit", function(event) {
-    const id = document.getElementById("nursing_id").files.length;
-    const cert = document.getElementById("nursing_certificate").files.length;
-    const license = document.getElementById("nursing_license").files.length;
-
-    const fileError = document.getElementById("fileError");
-
-    if (id + cert + license === 0) {
-      event.preventDefault();
-      fileError.style.display = "block";
-    } else {
-      fileError.style.display = "none";
-    }
-  });
-</script>
+      if (id + cert + license === 0) {
+        event.preventDefault();
+        alert("Please upload at least one proof document (ID, Certificate, or License).");
+      }
+    });
+  </script>
 
 </body>
-          </html>
+              </html>
