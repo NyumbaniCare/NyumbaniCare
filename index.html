@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #F7F9FC;
+            background-color: #E6ECEF; /* Lighter neutral background */
             color: #333;
         }
 
@@ -19,7 +19,7 @@
             width: 280px;
             height: 100vh;
             position: fixed;
-            background-color: #1C2B3C;
+            background-color: #2C3E50; /* Sidebar color */
             color: white;
             padding: 40px 20px;
             transition: transform 0.3s ease-in-out;
@@ -61,13 +61,18 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            background-color: #FF6F61;
+            background-color: #2C3E50; /* Match sidebar color */
             color: white;
             border: none;
             padding: 15px;
             font-size: 20px;
             cursor: pointer;
             z-index: 1001;
+            border-radius: 50%;
+        }
+
+        .toggle-btn:hover {
+            background-color: #4F6D7A;
         }
 
         /* Hero Section */
@@ -94,7 +99,7 @@
         }
 
         .hero button {
-            background-color: #1C2B3C;
+            background-color: #2C3E50;
             color: white;
             padding: 15px 30px;
             border: none;
@@ -122,13 +127,76 @@
 
         .content-section h2 {
             font-size: 32px;
-            color: #1C2B3C;
+            color: #2C3E50;
         }
 
         .content-section p {
             font-size: 18px;
             color: #555;
             line-height: 1.6;
+        }
+
+        /* Review Form */
+        .review-section {
+            background-color: #FFFFFF;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-section h2 {
+            font-size: 28px;
+            color: #2C3E50;
+            margin-bottom: 20px;
+        }
+
+        .review-section input, .review-section textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        .review-section button {
+            background-color: #FF6F61;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .review-section button:hover {
+            background-color: #FF4D3D;
+        }
+
+        /* Review List */
+        .review-list {
+            margin-top: 30px;
+        }
+
+        .review-item {
+            background-color: #F9F9F9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-item h4 {
+            margin: 0;
+            font-size: 20px;
+            color: #2C3E50;
+        }
+
+        .review-item p {
+            font-size: 16px;
+            color: #555;
         }
 
         /* Responsive Design */
@@ -190,6 +258,19 @@
             <h2>Why Choose Us?</h2>
             <p>We prioritize your comfort and well-being by providing personalized care that suits your needs. Our team is dedicated to delivering exceptional care with integrity and professionalism.</p>
         </div>
+
+        <div class="review-section">
+            <h2>Share Your Review</h2>
+            <form id="review-form">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <textarea id="review" rows="4" placeholder="Your Review" required></textarea>
+                <button type="submit">Submit Review</button>
+            </form>
+
+            <div class="review-list" id="review-list">
+                <!-- Reviews will appear here -->
+            </div>
+        </div>
     </main>
 
     <script>
@@ -211,7 +292,27 @@
                 document.querySelector("main").style.marginLeft = "0";
             }
         });
+
+        // Review Form Submission
+        const reviewForm = document.getElementById("review-form");
+        const reviewList = document.getElementById("review-list");
+
+        reviewForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const review = document.getElementById("review").value;
+
+            const reviewItem = document.createElement("div");
+            reviewItem.classList.add("review-item");
+            reviewItem.innerHTML = `<h4>${name}</h4><p>${review}</p>`;
+
+            reviewList.appendChild(reviewItem);
+
+            // Clear form after submission
+            reviewForm.reset();
+        });
     </script>
 
 </body>
-        </html>
+    </html>
