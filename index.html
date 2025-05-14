@@ -1,278 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>NyumbaniCare</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    :root {
-      --orange: #f57c00;
-      --dark-orange: #e65100;
-      --light-bg: #fffaf2;
-    }
-
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--light-bg);
+      background-color: #fff8f2;
       color: #333;
     }
 
-    /* Sidebar */
     .sidebar {
-      height: 100%;
-      width: 250px;
       position: fixed;
       top: 0;
       left: -250px;
-      background-color: var(--orange);
-      padding-top: 60px;
-      transition: 0.3s;
-      z-index: 998;
+      width: 250px;
+      height: 100%;
+      background-color: #ff8c42;
+      padding: 2rem 1rem;
+      transition: left 0.3s ease;
+      z-index: 999;
+    }
+
+    .sidebar.active {
+      left: 0;
     }
 
     .sidebar a {
-      padding: 16px 24px;
-      text-decoration: none;
-      font-size: 18px;
-      color: white;
       display: block;
+      color: white;
+      text-decoration: none;
+      margin: 1rem 0;
+      font-size: 1.2rem;
     }
 
-    .sidebar a:hover {
-      background-color: var(--dark-orange);
-    }
-
-    .menu-btn {
+    .toggle-btn {
       position: fixed;
-      top: 16px;
-      left: 16px;
-      font-size: 28px;
-      cursor: pointer;
-      z-index: 999;
+      top: 20px;
+      left: 20px;
       background: white;
-      color: var(--orange);
-      border-radius: 6px;
-      padding: 6px 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border: none;
+      padding: 0.5rem 0.7rem;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000;
     }
 
-    .overlay {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-color: rgba(0,0,0,0.5);
-      z-index: 997;
-      transition: 0.3s;
+    .toggle-btn span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #ff8c42;
+      margin: 5px 0;
     }
 
-    /* Hero Section */
     .hero {
-      background: url('https://images.unsplash.com/photo-1588776814546-ec7e4c92abf9') center/cover no-repeat;
-      height: 80vh;
+      position: relative;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1588776814546-bc5c7d9793d5?fit=crop&w=1600&q=80') no-repeat center center/cover;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 20px;
-      color: white;
-      position: relative;
     }
 
-    .hero::after {
+    .hero::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background-color: rgba(0, 0, 0, 0.4);
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
     }
 
     .hero-content {
       position: relative;
-      z-index: 1;
+      color: white;
+      z-index: 2;
     }
 
     .hero h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
 
     .hero p {
-      font-size: 20px;
+      font-size: 1.2rem;
     }
 
-    /* Main Content */
-    .main {
-      padding: 40px 20px;
+    .services, .testimonials {
+      padding: 4rem 1rem;
       text-align: center;
+      background-color: #fff8f2;
     }
 
-    .main h2 {
-      color: var(--orange);
-      margin-bottom: 20px;
+    .services h2, .testimonials h2 {
+      color: #ff8c42;
+      font-size: 2rem;
+      margin-bottom: 2rem;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
+    .cards, .testimonial-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
     }
 
-    .card {
+    .card, .testimonial-card {
       background: white;
-      padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      transition: 0.3s;
+      padding: 1rem;
+      width: 250px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    .card:hover {
-      transform: translateY(-5px);
+    .card h3 {
+      color: #ff8c42;
+      margin-bottom: 0.5rem;
     }
 
-    .auth-form {
-      max-width: 400px;
-      margin: 40px auto;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    .testimonial-card p {
+      font-style: italic;
+      margin-bottom: 0.5rem;
     }
 
-    .auth-form h2 {
-      margin-bottom: 16px;
-      color: var(--orange);
-    }
-
-    .auth-form input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-
-    .auth-form button {
-      width: 100%;
-      padding: 12px;
-      background: var(--orange);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .auth-form button:hover {
-      background-color: var(--dark-orange);
+    .testimonial-card strong {
+      color: #ff8c42;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      background-color: #eee;
-      color: #555;
-      margin-top: 30px;
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 32px;
-      }
+      background: #f4f4f4;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <div class="menu-btn" onclick="toggleSidebar()">☰</div>
+  <button class="toggle-btn" onclick="toggleSidebar()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-  <div id="sidebar" class="sidebar">
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Request Care</a>
-    <a href="#">Contact</a>
-    <a href="#">Register</a>
-  </div>
+  <nav class="sidebar" id="sidebar">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
-
-  <!-- Hero -->
-  <div class="hero">
+  <section class="hero" id="home">
     <div class="hero-content">
       <h1>NyumbaniCare</h1>
       <p>Bringing quality healthcare to your doorstep</p>
     </div>
-  </div>
+  </section>
 
-  <!-- Main Content -->
-  <div class="main">
+  <section class="services" id="services">
     <h2>Our Services</h2>
     <div class="cards">
       <div class="card">
         <h3>In-Home Care</h3>
-        <p>Professional nurses available for full-time and part-time care.</p>
+        <p>Professional nurses available to care for your loved ones at home.</p>
       </div>
       <div class="card">
         <h3>Maternity Support</h3>
-        <p>Trusted support for new and expecting mothers at home.</p>
+        <p>Trusted support for new and expectant mothers with skilled midwives.</p>
       </div>
       <div class="card">
-        <h3>Geriatric Care</h3>
-        <p>Gentle and expert assistance for your loved seniors.</p>
+        <h3>Health Checkups</h3>
+        <p>Routine and emergency checkups right at your home.</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Register Form -->
-  <form class="auth-form">
-    <h2>Register</h2>
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email" required>
-    <input type="password" placeholder="Password" required>
-    <button type="submit">Register</button>
-  </form>
+  <!-- Testimonials Section -->
+  <section class="testimonials" id="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-cards">
+      <div class="testimonial-card">
+        <p>"NyumbaniCare has been a blessing to our family. Their nurses are kind and professional."</p>
+        <strong>– Mary K.</strong>
+      </div>
+      <div class="testimonial-card">
+        <p>"I received excellent prenatal care. The midwives were always on time and so helpful."</p>
+        <strong>– Jane N.</strong>
+      </div>
+      <div class="testimonial-card">
+        <p>"Highly recommend their home visits. It saved me from long hospital queues!"</p>
+        <strong>– Daniel O.</strong>
+      </div>
+    </div>
+  </section>
 
-  <!-- Sign In Form -->
-  <form class="auth-form">
-    <h2>Sign In</h2>
-    <input type="email" placeholder="Email" required>
-    <input type="password" placeholder="Password" required>
-    <button type="submit">Sign In</button>
-  </form>
-
-  <!-- Footer -->
   <footer>
     &copy; 2025 NyumbaniCare. All rights reserved.
   </footer>
 
-  <!-- Sidebar JS -->
   <script>
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
+    const sidebar = document.getElementById('sidebar');
 
     function toggleSidebar() {
-      sidebar.style.left = sidebar.style.left === "0px" ? "-250px" : "0px";
-      overlay.style.width = overlay.style.width === "100%" ? "0" : "100%";
+      sidebar.classList.toggle('active');
     }
 
-    function closeSidebar() {
-      sidebar.style.left = "-250px";
-      overlay.style.width = "0";
-    }
+    document.addEventListener('click', function(event) {
+      const isClickInsideSidebar = sidebar.contains(event.target);
+      const isToggleButton = event.target.closest('.toggle-btn');
 
-    document.addEventListener("click", function (e) {
-      if (!sidebar.contains(e.target) && !e.target.classList.contains("menu-btn")) {
-        closeSidebar();
+      if (!isClickInsideSidebar && !isToggleButton) {
+        sidebar.classList.remove('active');
       }
     });
   </script>
-
 </body>
-    </html>a
+  </html>
