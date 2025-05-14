@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NyumbaniCare | Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- Fixed Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-m1QexB/8FXJKhVdn6RXLvVtLRTl+k5V2Rw+YClKP+Y0kLESTybrt1uFJ+LrxJjF82JhSeKZBT9OVQXt6I3JQCg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
       --main-orange: #ff7a00;
@@ -26,7 +27,7 @@
       display: flex;
     }
 
-    /* Sidebar styles */
+    /* Sidebar */
     .sidebar {
       position: fixed;
       top: 0;
@@ -38,12 +39,13 @@
       padding: 20px;
       display: flex;
       flex-direction: column;
+      transform: translateX(-100%);
       transition: transform 0.3s ease;
       z-index: 1000;
     }
 
-    .sidebar.hidden {
-      transform: translateX(-100%);
+    .sidebar.show {
+      transform: translateX(0);
     }
 
     .logo {
@@ -77,14 +79,10 @@
 
     /* Main content */
     .main {
-      margin-left: 240px;
       flex: 1;
       padding: 30px;
       transition: margin-left 0.3s ease;
-    }
-
-    .main.full {
-      margin-left: 0;
+      width: 100%;
     }
 
     .toggle-btn {
@@ -99,7 +97,6 @@
       border-radius: 5px;
       cursor: pointer;
       z-index: 1100;
-      display: none;
     }
 
     .hero {
@@ -176,7 +173,6 @@
       }
 
       .main {
-        margin-left: 0;
         padding: 80px 20px 20px;
       }
     }
