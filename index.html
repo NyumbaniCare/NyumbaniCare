@@ -2,246 +2,160 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>NyumbaniCare</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NyumbaniCare - Homepage</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    nav {
+      background: #004d3d;  /* Dark Green */
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      background-color: #006a56; /* Lighter Green */
     }
 
     body {
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #fffaf6;
+      background-color: #f0f5f4;
       color: #333;
     }
 
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 250px;
-      height: 100%;
-      background-color: #ff6f61;
-      padding: 5rem 1rem 2rem 1rem;
-      transition: left 0.3s ease;
-      z-index: 999;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    header {
+      background-color: #007b5e; /* Green background */
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
     }
 
-    .sidebar.active {
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    .about-section {
+      background-color: #007b5e; /* Green About Section */
+      color: white;
+      padding: 60px 20px;
+    }
+
+    .about-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .about-container h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .about-container h3 {
+      font-size: 1.8rem;
+      margin-top: 30px;
+    }
+
+    .about-container p,
+    .about-container ul {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .about-container ul {
+      padding-left: 20px;
+    }
+
+    .sidebar {
+      background-color: #004d3d; /* Sidebar background color */
+      width: 250px;
+      position: fixed;
+      top: 0;
       left: 0;
+      height: 100%;
+      padding-top: 20px;
     }
 
     .sidebar a {
-      display: block;
       color: white;
+      display: block;
+      padding: 14px 20px;
       text-decoration: none;
-      margin: 1.5rem 0;
-      font-size: 1.2rem;
-      transition: color 0.3s;
     }
 
     .sidebar a:hover {
-      color: #ffe8d6;
+      background-color: #006a56; /* Sidebar item hover color */
     }
 
-    .toggle-btn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background: #fff;
-      border: none;
-      padding: 0.5rem 0.7rem;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 1000;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-
-    .toggle-btn span {
-      display: block;
-      width: 25px;
-      height: 3px;
-      background-color: #ff6f61;
-      margin: 5px 0;
-    }
-
-    .hero {
-      position: relative;
-      height: 10vh;
-      background: url('https://images.unsplash.com/photo-1588776814546-bc5c7d9793d5?fit=crop&w=1600&q=80') no-repeat center center/cover;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    .hero-content {
-      position: relative;
-      color: white;
-      z-index: 2;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-    }
-
-    .services, .testimonials {
-      padding: 4rem 1rem;
-      text-align: center;
-    }
-
-    .services {
-      background-color: #fffaf6;
-    }
-
-    .testimonials {
-      background-color: #fbe9e7;
-    }
-
-    .services h2, .testimonials h2 {
-      color: #ff6f61;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .cards, .testimonial-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .card, .testimonial-card {
-      background: white;
-      border-radius: 10px;
-      padding: 1rem;
-      width: 250px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease;
-    }
-
-    .card:hover, .testimonial-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h3 {
-      color: #ff6f61;
-      margin-bottom: 0.5rem;
-    }
-
-    .testimonial-card p {
-      font-style: italic;
-      margin-bottom: 0.5rem;
-    }
-
-    .testimonial-card strong {
-      color: #ff6f61;
-    }
-
-    footer {
-      text-align: center;
-      background: #f4f4f4;
-      padding: 1rem;
-      margin-top: 2rem;
-      font-size: 0.9rem;
+    .main-content {
+      margin-left: 270px;
+      padding: 20px;
     }
   </style>
 </head>
 <body>
 
-  <button class="toggle-btn" onclick="toggleSidebar()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+<header>
+  <h1>NyumbaniCare</h1>
+  <p>We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
+</header>
 
-  <nav class="sidebar" id="sidebar">
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="About.html">About</a>
-    <a href="#contact">Contact</a>
-    <a href="Nurse.html">Nurse registration</a>
-  </nav>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="About.html">About Us</a>
+  <a href="Care.html">Request Care</a>
+  <a href="#contact">Contact</a>
+  <a href="Nurse.html">Register</a>
+</nav>
 
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1>NyumbaniCare</h1>
-      <p>Bringing quality healthcare to your doorstep</p>
+<div class="sidebar">
+  <a href="index.html">Home</a>
+  <a href="About.html">About Us</a>
+  <a href="Care.html">Request Care</a>
+  <a href="#contact">Contact</a>
+  <a href="Nurse.html">Register</a>
+</div>
+
+<div class="main-content">
+  <section class="about-section">
+    <div class="about-container">
+      <h2>About NyumbaniCare</h2>
+      <p><strong>NyumbaniCare</strong> is a Tanzanian home care solution dedicated to serving individuals who are unable or prefer not to visit hospitals. Our mission is to make quality healthcare accessible and convenient for everyone, right in the comfort of their homes.</p>
+      
+      <h3>Headquarters</h3>
+      <p>We operate from <strong>Dar es Salaam</strong>, with our primary care services anchored at the renowned <strong>Muhimbili National Hospital</strong> in Upanga West, Ilala District. This institution stands as Tanzania’s national referral hospital and a leading academic and research hub in the region.</p>
+
+      <h3>Our Services</h3>
+      <ul>
+        <li>Home-Based Medical Care: Personalized care delivered at home.</li>
+        <li>Nursing Services: Professional nursing support tailored to individual needs.</li>
+        <li>Physiotherapy: Rehabilitative services to aid mobility and recovery.</li>
+        <li>Palliative Care: Comfort and support for those with serious health conditions.</li>
+        <li>Maternal and Neonatal Care: Specialized attention for mothers and newborns.</li>
+        <li>Geriatric Care: Comprehensive care for the elderly.</li>
+      </ul>
+
+      <h3>Why Choose Us?</h3>
+      <ul>
+        <li><strong>Professional Staff:</strong> Qualified experts dedicated to quality care.</li>
+        <li><strong>Convenience:</strong> We deliver care right to your door.</li>
+        <li><strong>Comprehensive Care:</strong> From check-ups to specialized services.</li>
+      </ul>
+
+      <p>At <strong>NyumbaniCare</strong>, we believe in compassionate, patient-centered care that prioritizes your health and well-being.</p>
     </div>
   </section>
+</div>
 
-  <section class="services" id="services">
-    <h2>Our Services</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>In-Home Care</h3>
-        <p>Professional nurses available to care for your loved ones at home.</p>
-      </div>
-      <div class="card">
-        <h3>Maternity Support</h3>
-        <p>Trusted support for new and expectant mothers with skilled midwives.</p>
-      </div>
-      <div class="card">
-        <h3>Health Checkups</h3>
-        <p>Routine and emergency checkups right at your home.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="testimonials" id="testimonials">
-    <h2>What Our Clients Say</h2>
-    <div class="testimonial-cards">
-      <div class="testimonial-card">
-        <p>"NyumbaniCare has been a blessing to our family. Their nurses are kind and professional."</p>
-        <strong>– Mary K.</strong>
-      </div>
-      <div class="testimonial-card">
-        <p>"I received excellent prenatal care. The midwives were always on time and so helpful."</p>
-        <strong>– Jane N.</strong>
-      </div>
-      <div class="testimonial-card">
-        <p>"Highly recommend their home visits. It saved me from long hospital queues!"</p>
-        <strong>– Daniel O.</strong>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 NyumbaniCare. All rights reserved.
-  </footer>
-
-  <script>
-    const sidebar = document.getElementById('sidebar');
-
-    function toggleSidebar() {
-      sidebar.classList.toggle('active');
-    }
-
-    document.addEventListener('click', function(event) {
-      const isClickInsideSidebar = sidebar.contains(event.target);
-      const isToggleButton = event.target.closest('.toggle-btn');
-
-      if (!isClickInsideSidebar && !isToggleButton) {
-        sidebar.classList.remove('active');
-      }
-    });
-  </script>
 </body>
-      </html>
+</html>
