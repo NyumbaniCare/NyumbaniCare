@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nyumbani Care - Home</title>
     <style>
-        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -14,7 +13,6 @@
             color: #333;
         }
 
-        /* Sidebar Styles */
         .sidebar {
             width: 250px;
             height: 100vh;
@@ -51,7 +49,6 @@
             padding-left: 10px;
         }
 
-        /* Toggle Button */
         .toggle-btn {
             display: none;
             position: absolute;
@@ -66,7 +63,6 @@
             z-index: 1001;
         }
 
-        /* Main Content */
         main {
             margin-left: 260px;
             padding: 20px;
@@ -78,16 +74,6 @@
             color: #2C3E50;
         }
 
-        /* Additional Content Styling */
-        section {
-            margin: 30px 0;
-        }
-
-        section h2 {
-            color: #3498DB;
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -126,48 +112,25 @@
     <main>
         <h1>Welcome to Nyumbani Care</h1>
         <p>Providing compassionate home care services tailored to your needs.</p>
-
-        <section>
-            <h2>Our Services</h2>
-            <p>We offer a wide range of healthcare services, including home nursing, physiotherapy, palliative care, and more.</p>
-        </section>
-
-        <section>
-            <h2>Why Choose Us?</h2>
-            <ul>
-                <li>Experienced healthcare professionals.</li>
-                <li>Personalized care for every patient.</li>
-                <li>Compassionate, convenient, and affordable care.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Contact Us</h2>
-            <p>Get in touch with us for any inquiries or to schedule a home visit.</p>
-        </section>
     </main>
 
     <script>
-        // Toggle Sidebar
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             const main = document.querySelector("main");
             const isOpen = sidebar.style.transform === "translateX(0)";
             
-            // Open or close the sidebar
             sidebar.style.transform = isOpen ? "translateX(-100%)" : "translateX(0)";
-            main.style.marginLeft = isOpen ? "0" : "260px"; // Adjust main content position
+            main.style.marginLeft = isOpen ? "0" : "260px";
         }
 
-        // Close sidebar when clicking anywhere outside
         document.addEventListener("click", function(event) {
             const sidebar = document.getElementById("sidebar");
             const toggleBtn = document.querySelector(".toggle-btn");
-            
-            // Check if the click is outside the sidebar or the toggle button
+
             if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
                 sidebar.style.transform = "translateX(-100%)";
-                document.querySelector("main").style.marginLeft = "0"; // Reset main content margin
+                document.querySelector("main").style.marginLeft = "0";
             }
         });
     </script>
