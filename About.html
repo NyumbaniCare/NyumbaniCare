@@ -1,185 +1,267 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About NyumbaniCare</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NyumbaniCare Nurse Registration</title>
   <style>
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
-    }body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f9f8;
-  color: #333;
-}
-
-.toggle-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: #ffffff;
-  border: none;
-  padding: 0.5rem 0.7rem;
-  border-radius: 5px;
-  cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.toggle-btn span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: #008c72;
-  margin: 5px 0;
-}
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: -250px;
-  width: 250px;
-  height: 100%;
-  background-color: #008c72;
-  padding: 4rem 1rem 2rem;
-  transition: left 0.3s ease;
-  z-index: 999;
-}
-
-.sidebar.active {
-  left: 0;
-}
-
-.sidebar a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  margin: 1.2rem 0;
-  font-size: 1.2rem;
-  padding-left: 10px;
-}
-
-.sidebar a:hover {
-  background-color: rgba(255,255,255,0.2);
-  border-radius: 5px;
-}
-
-header {
-  padding: 2rem;
-  text-align: center;
-  background-color: #007159;
-  color: white;
-}
-
-header h1 {
-  font-size: 2.5rem;
-}
-
-header p {
-  margin-top: 10px;
-  font-size: 1.1rem;
-}
-
-.about-section {
-  background-color: #ffffff;
-  padding: 60px 20px;
-}
-
-.about-container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.about-container h2 {
-  font-size: 2.5rem;
-  color: #007159;
-  margin-bottom: 20px;
-}
-
-.about-container h3 {
-  font-size: 1.8rem;
-  margin-top: 30px;
-  color: #008c72;
-}
-
-.about-container p,
-.about-container ul {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #333;
-}
-
-.about-container ul {
-  padding-left: 20px;
-}
-
-footer {
-  text-align: center;
-  background: #007159;
-  color: white;
-  padding: 1rem;
-  margin-top: 2rem;
-  font-size: 0.9rem;
-}
-
-  </style>
-</head>
-<body>  <button class="toggle-btn" onclick="toggleSidebar()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>  <nav class="sidebar" id="sidebar">
-    <a href="index.html">Home</a>
-    <a href="#about">About</a>
-    <a href="Care.html">Request Care</a>
-    <a href="#contact">Contact</a>
-    <a href="Nurse.html">Register</a>
-  </nav>  <header>
-    <h1>NyumbaniCare</h1>
-    <p>We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
-  </header>  <section class="about-section" id="about">
-    <div class="about-container">
-      <h2>About NyumbaniCare</h2>
-      <p><strong>NyumbaniCare</strong> is a Tanzanian home care solution dedicated to serving individuals who are unable or prefer not to visit hospitals. Our mission is to make quality healthcare accessible and convenient for everyone, right in the comfort of their homes.</p><h3>Headquarters</h3>
-  <p>We operate from <strong>Dar es Salaam</strong>, with our primary care services anchored at the renowned <strong>Muhimbili National Hospital</strong> in Upanga West, Ilala District. This institution stands as Tanzania’s national referral hospital and a leading academic and research hub in the region.</p>
-
-  <h3>Our Services</h3>
-  <ul>
-    <li>Home-Based Medical Care: Personalized care delivered at home.</li>
-    <li>Nursing Services: Professional nursing support tailored to individual needs.</li>
-    <li>Physiotherapy: Rehabilitative services to aid mobility and recovery.</li>
-    <li>Palliative Care: Comfort and support for those with serious health conditions.</li>
-    <li>Maternal and Neonatal Care: Specialized attention for mothers and newborns.</li>
-    <li>Geriatric Care: Comprehensive care for the elderly.</li>
-  </ul>
-
-  <h3>Why Choose Us?</h3>
-  <ul>
-    <li><strong>Professional Staff:</strong> Qualified experts dedicated to quality care.</li>
-    <li><strong>Convenience:</strong> We deliver care right to your door.</li>
-    <li><strong>Comprehensive Care:</strong> From check-ups to specialized services.</li>
-  </ul>
-
-  <p>At <strong>NyumbaniCare</strong>, we believe in compassionate, patient-centered care that prioritizes your health and well-being.</p>
-</div>
-
-  </section>  <footer>
-    &copy; 2025 NyumbaniCare. All rights reserved.
-  </footer>  <script>
-    const sidebar = document.getElementById('sidebar');
-
-    function toggleSidebar() {
-      sidebar.classList.toggle('active');
     }
 
-    document.addEventListener('click', function(event) {
-      const isClickInsideSidebar = sidebar.contains(event.target);
-      const isToggleButton = event.target.closest('.toggle-btn');
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f5f4;
+      display: flex;
+      min-height: 100vh;
+    }
 
-      if (!isClickInsideSidebar && !isToggleButton) {
-        sidebar.classList.remove('active');
+    /* Top Navigation */
+    nav {
+      background: #004d3d;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: #006a56;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background-color: #00382d;
+      color: white;
+      padding-top: 30px;
+      min-height: 100vh;
+    }
+
+    .sidebar h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background-color: #005845;
+    }
+
+    .content {
+      flex: 1;
+      padding: 40px;
+    }
+
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      color: #004d3d;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .description {
+      color: #555;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 20px 0 8px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    input[type="file"] {
+      margin-top: 10px;
+    }
+
+    .checkbox-group,
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .checkbox-group label,
+    .radio-group label {
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .submit-btn {
+      background-color: #007b5e;
+      color: white;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #005845;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+      }
+
+      .content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h3>Nurse Panel</h3>
+    <a href="#">Dashboard</a>
+    <a href="#">My Profile</a>
+    <a href="#">Help</a>
+    <a href="#">Settings</a>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1>NyumbaniCare</h1>
+      <p>We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
+    </header>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="About.html">About Us</a>
+      <a href="Care.html">Request Care</a>
+      <a href="#contact">Contact</a>
+      <a href="Nurse.html" class="active">Register</a>
+    </nav>
+
+    <div class="content">
+      <h2 style="color: #007b5e;">Nurse Registration</h2>
+      <p class="description">Please fill in the details below to register as a nurse for NyumbaniCare. We look forward to working with you!</p>
+
+      <form id="nurseForm">
+        <div class="form-group">
+          <label for="fullname">Full Name *</label>
+          <input type="text" id="fullname" name="fullname" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+
+        <div class="form-group">
+          <label>Qualifications *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="qualification" value="Certificate" required /> Certificate</label>
+            <label><input type="radio" name="qualification" value="Diploma" /> Diploma</label>
+            <label><input type="radio" name="qualification" value="Degree" /> Degree</label>
+            <label><input type="radio" name="qualification" value="Masters" /> Masters</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Specialization *</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="specialization" value="Neonatal Care" /> Neonatal Care</label>
+            <label><input type="checkbox" name="specialization" value="Maternity Care" /> Maternity Care</label>
+            <label><input type="checkbox" name="specialization" value="General Nursing" /> General Nursing</label>
+            <label><input type="checkbox" name="specialization" value="Pediatrics" /> Pediatrics</label>
+            <label><input type="checkbox" name="specialization" value="Geriatric Care" /> Geriatric Care</label>
+            <label><input type="checkbox" name="specialization" value="Physiotherapy" /> Physiotherapy</label>
+            <label><input type="checkbox" name="specialization" value="Mental Health" /> Mental Health</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Availability *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="availability" value="Full Time" required /> Full Time</label>
+            <label><input type="radio" name="availability" value="Part Time" /> Part Time</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Proof of Profession *</label>
+          <input type="file" id="nursing_id" name="nursing_id" accept=".jpg,.png,.pdf" /><br> Nursing ID (for students)<br><br>
+          <input type="file" id="nursing_certificate" name="nursing_certificate" accept=".jpg,.png,.pdf" /><br> Nursing Certificate<br><br>
+          <input type="file" id="nursing_license" name="nursing_license" accept=".jpg,.png,.pdf" /><br> Nursing License<br><br>
+          <label>(Optional)</label>
+          <input type="file" name="resume" accept=".pdf,.doc,.docx" /> Upload Resume or Recommendation Letter
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Registration</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("nurseForm").addEventListener("submit", function (event) {
+      const id = document.getElementById("nursing_id").files.length;
+      const cert = document.getElementById("nursing_certificate").files.length;
+      const license = document.getElementById("nursing_license").files.length;
+
+      if (id + cert + license === 0) {
+        event.preventDefault();
+        alert("Please upload at least one proof document (ID, Certificate, or License).");
       }
     });
-  </script></body>
-  </html>
+  </script>
+
+</body>
+                                                                                      </html>
