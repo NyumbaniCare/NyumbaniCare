@@ -5,36 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nyumbani Care - Home</title>
     <style>
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #F3F6F9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F7F9FC;
             color: #333;
         }
 
+        /* Sidebar Styles */
         .sidebar {
-            width: 250px;
+            width: 280px;
             height: 100vh;
             position: fixed;
-            background-color: #2C3E50;
+            background-color: #1C2B3C;
             color: white;
-            padding: 20px;
+            padding: 40px 20px;
             transition: transform 0.3s ease-in-out;
             z-index: 1000;
         }
 
         .sidebar h2 {
             text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
         .sidebar ul {
             list-style: none;
             padding: 0;
+            margin-top: 30px;
         }
 
         .sidebar ul li {
-            padding: 10px 0;
+            padding: 15px 0;
         }
 
         .sidebar ul li a {
@@ -42,38 +47,91 @@
             color: white;
             display: block;
             font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 6px;
         }
 
         .sidebar ul li a:hover {
-            background-color: #3498DB;
-            padding-left: 10px;
+            background-color: #4F6D7A;
         }
 
+        /* Sidebar Toggle */
         .toggle-btn {
             display: none;
             position: absolute;
             top: 20px;
             left: 20px;
-            background-color: #3498DB;
+            background-color: #FF6F61;
             color: white;
             border: none;
-            padding: 10px;
+            padding: 15px;
             font-size: 20px;
             cursor: pointer;
             z-index: 1001;
         }
 
-        main {
-            margin-left: 260px;
-            padding: 20px;
+        /* Hero Section */
+        .hero {
+            background-color: #FF6F61;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-top: 15px;
+            max-width: 600px;
+        }
+
+        .hero button {
+            background-color: #1C2B3C;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 30px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero button:hover {
+            background-color: #4F6D7A;
+        }
+
+        /* Main Content */
+        main {
+            margin-left: 280px;
+            padding: 40px;
             transition: margin-left 0.3s ease;
         }
 
-        h1 {
-            color: #2C3E50;
+        .content-section {
+            margin-bottom: 40px;
         }
 
+        .content-section h2 {
+            font-size: 32px;
+            color: #1C2B3C;
+        }
+
+        .content-section p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -89,6 +147,14 @@
 
             .sidebar ul li a {
                 font-size: 16px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
             }
         }
     </style>
@@ -109,9 +175,21 @@
         </ul>
     </div>
 
-    <main>
+    <div class="hero">
         <h1>Welcome to Nyumbani Care</h1>
-        <p>Providing compassionate home care services tailored to your needs.</p>
+        <p>Providing compassionate home care services tailored to your needs with professional and certified nurses.</p>
+        <button onclick="location.href='#services'">Explore Our Services</button>
+    </div>
+
+    <main>
+        <div class="content-section">
+            <h2>Our Services</h2>
+            <p>At Nyumbani Care, we offer a range of home care services, from general nursing to specialized care in maternity, pediatrics, and more.</p>
+        </div>
+        <div class="content-section">
+            <h2>Why Choose Us?</h2>
+            <p>We prioritize your comfort and well-being by providing personalized care that suits your needs. Our team is dedicated to delivering exceptional care with integrity and professionalism.</p>
+        </div>
     </main>
 
     <script>
@@ -121,7 +199,7 @@
             const isOpen = sidebar.style.transform === "translateX(0)";
             
             sidebar.style.transform = isOpen ? "translateX(-100%)" : "translateX(0)";
-            main.style.marginLeft = isOpen ? "0" : "260px";
+            main.style.marginLeft = isOpen ? "0" : "280px";
         }
 
         document.addEventListener("click", function(event) {
@@ -136,4 +214,4 @@
     </script>
 
 </body>
-</html>
+        </html>
