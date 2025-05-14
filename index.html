@@ -13,7 +13,7 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #fff8f2;
+      background-color: #fffaf6;
       color: #333;
     }
 
@@ -23,10 +23,11 @@
       left: -250px;
       width: 250px;
       height: 100%;
-      background-color: #ff8c42;
-      padding: 2rem 1rem;
+      background-color: #ff6f61;
+      padding: 5rem 1rem 2rem 1rem;
       transition: left 0.3s ease;
       z-index: 999;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     }
 
     .sidebar.active {
@@ -37,33 +38,39 @@
       display: block;
       color: white;
       text-decoration: none;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
       font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .sidebar a:hover {
+      color: #ffe8d6;
     }
 
     .toggle-btn {
       position: fixed;
       top: 20px;
       left: 20px;
-      background: white;
+      background: #fff;
       border: none;
       padding: 0.5rem 0.7rem;
       border-radius: 5px;
       cursor: pointer;
       z-index: 1000;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
 
     .toggle-btn span {
       display: block;
       width: 25px;
       height: 3px;
-      background-color: #ff8c42;
+      background-color: #ff6f61;
       margin: 5px 0;
     }
 
     .hero {
       position: relative;
-      height: 10vh;
+      height: 50vh;
       background: url('https://images.unsplash.com/photo-1588776814546-bc5c7d9793d5?fit=crop&w=1600&q=80') no-repeat center center/cover;
       display: flex;
       align-items: center;
@@ -97,11 +104,18 @@
     .services, .testimonials {
       padding: 4rem 1rem;
       text-align: center;
-      background-color: #fff8f2;
+    }
+
+    .services {
+      background-color: #fffaf6;
+    }
+
+    .testimonials {
+      background-color: #fbe9e7;
     }
 
     .services h2, .testimonials h2 {
-      color: #ff8c42;
+      color: #ff6f61;
       font-size: 2rem;
       margin-bottom: 2rem;
     }
@@ -119,10 +133,15 @@
       padding: 1rem;
       width: 250px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover, .testimonial-card:hover {
+      transform: translateY(-5px);
     }
 
     .card h3 {
-      color: #ff8c42;
+      color: #ff6f61;
       margin-bottom: 0.5rem;
     }
 
@@ -132,7 +151,7 @@
     }
 
     .testimonial-card strong {
-      color: #ff8c42;
+      color: #ff6f61;
     }
 
     footer {
@@ -185,7 +204,6 @@
     </div>
   </section>
 
-  <!-- Testimonials Section -->
   <section class="testimonials" id="testimonials">
     <h2>What Our Clients Say</h2>
     <div class="testimonial-cards">
@@ -225,4 +243,4 @@
     });
   </script>
 </body>
-  </html>
+      </html>
