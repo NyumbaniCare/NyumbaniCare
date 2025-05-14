@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>NyumbaniCare - Request Care</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     * {
       box-sizing: border-box;
@@ -25,6 +25,7 @@
       min-height: 100vh;
       color: white;
       flex-shrink: 0;
+      transition: transform 0.3s ease;
     }
 
     .sidebar h1 {
@@ -44,6 +45,18 @@
 
     .sidebar a:hover {
       background-color: #006a56;
+    }
+
+    .toggle-btn {
+      display: none;
+      background: #004d3d;
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
     }
 
     .content {
@@ -99,32 +112,40 @@
       display: none;
     }
 
-    /* Mobile view */
+    /* Mobile styles */
     @media (max-width: 768px) {
+      .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        transform: translateX(-100%);
+        z-index: 1000;
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .toggle-btn {
+        display: block;
+      }
+
       body {
         flex-direction: column;
       }
 
-      .sidebar {
-        width: 100%;
-        text-align: center;
-        min-height: auto;
-      }
-
-      .sidebar a {
-        display: inline-block;
-        margin: 5px 10px;
-      }
-
-      .container {
-        margin-top: 20px;
+      .content {
+        margin-top: 60px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="sidebar">
+  <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+
+  <div class="sidebar" id="sidebar">
     <h1>NyumbaniCare</h1>
     <a href="index.html">Home</a>
     <a href="About.html">About Us</a>
@@ -215,7 +236,11 @@
       document.getElementById("whatsAppLink").href = `https://wa.me/255611069297?text=${encodeURIComponent(message)}`;
       document.getElementById("emailLink").href = `mailto:?subject=NyumbaniCare Payment Confirmation&body=${encodeURIComponent(message)}`;
     }
+
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
   </script>
 
 </body>
-  </html>
+                        </html>
