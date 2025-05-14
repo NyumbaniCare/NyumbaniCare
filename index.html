@@ -6,33 +6,21 @@
   <title>NyumbaniCare</title>
   <style>
     :root {
-      --main-orange: #f57c00;
+      --orange: #f57c00;
       --dark-orange: #e65100;
-      --light-bg: #fff7f0;
+      --light-bg: #fffaf2;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: var(--light-bg);
       color: #333;
-    }
-
-    .header {
-      background-color: var(--main-orange);
-      color: white;
-      padding: 40px;
-      text-align: center;
-    }
-
-    .header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    .header p {
-      margin-top: 10px;
-      font-size: 1.2rem;
     }
 
     /* Sidebar */
@@ -41,18 +29,19 @@
       width: 250px;
       position: fixed;
       top: 0;
-      left: -260px;
-      background-color: var(--main-orange);
+      left: -250px;
+      background-color: var(--orange);
       padding-top: 60px;
       transition: 0.3s;
-      z-index: 2;
+      z-index: 998;
     }
 
     .sidebar a {
-      display: block;
-      color: white;
       padding: 16px 24px;
       text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
     }
 
     .sidebar a:hover {
@@ -60,175 +49,230 @@
     }
 
     .menu-btn {
+      position: fixed;
+      top: 16px;
+      left: 16px;
       font-size: 28px;
       cursor: pointer;
-      position: fixed;
-      top: 15px;
-      left: 20px;
-      color: var(--main-orange);
-      z-index: 3;
+      z-index: 999;
+      background: white;
+      color: var(--orange);
+      border-radius: 6px;
+      padding: 6px 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
     .overlay {
+      height: 100%;
+      width: 0;
       position: fixed;
       top: 0;
       left: 0;
-      width: 0%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 1;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 997;
       transition: 0.3s;
     }
 
-    .main {
-      padding: 20px;
-      margin-top: 80px;
-    }
-
-    .form-section {
+    /* Hero Section */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1588776814546-ec7e4c92abf9') center/cover no-repeat;
+      height: 80vh;
       display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
+      align-items: center;
       justify-content: center;
-      margin-top: 60px;
-    }
-
-    .form-card {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      width: 320px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    .form-card h2 {
-      color: var(--main-orange);
       text-align: center;
+      padding: 20px;
+      color: white;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 20px;
+    }
+
+    /* Main Content */
+    .main {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .main h2 {
+      color: var(--orange);
       margin-bottom: 20px;
     }
 
-    .form-card input {
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .auth-form {
+      max-width: 400px;
+      margin: 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .auth-form h2 {
+      margin-bottom: 16px;
+      color: var(--orange);
+    }
+
+    .auth-form input {
       width: 100%;
-      padding: 10px;
-      margin: 8px 0;
+      padding: 12px;
+      margin: 10px 0;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
     }
 
-    .form-card button {
+    .auth-form button {
       width: 100%;
-      background: var(--main-orange);
+      padding: 12px;
+      background: var(--orange);
       color: white;
-      padding: 10px;
       border: none;
-      border-radius: 5px;
-      margin-top: 10px;
+      border-radius: 6px;
       cursor: pointer;
+      font-size: 1rem;
     }
 
-    .form-card button:hover {
-      background: var(--dark-orange);
+    .auth-form button:hover {
+      background-color: var(--dark-orange);
     }
 
     footer {
-      background-color: #333;
-      color: white;
       text-align: center;
       padding: 20px;
-      margin-top: 60px;
+      background-color: #eee;
+      color: #555;
+      margin-top: 30px;
     }
 
-    @media screen and (max-width: 768px) {
-      .form-section {
-        flex-direction: column;
-        align-items: center;
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 32px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar & Toggle -->
   <div class="menu-btn" onclick="toggleSidebar()">☰</div>
 
   <div id="sidebar" class="sidebar">
-    <a href="index.html">Home</a>
-    <a href="About.html">About Us</a>
-    <a href="Care.html">Request Care</a>
-    <a href="#contact">Contact</a>
-    <a href="Nurse.html">Register</a>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Request Care</a>
+    <a href="#">Contact</a>
+    <a href="#">Register</a>
   </div>
 
   <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
 
-  <!-- Header -->
-  <div class="header">
-    <h1>NyumbaniCare</h1>
-    <p>We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-content">
+      <h1>NyumbaniCare</h1>
+      <p>Bringing quality healthcare to your doorstep</p>
+    </div>
   </div>
 
   <!-- Main Content -->
   <div class="main">
-    <h2 style="text-align:center;">Welcome to NyumbaniCare</h2>
-    <p style="text-align:center;">Your trusted home-based healthcare provider.</p>
-
-    <!-- Register and Sign In Forms -->
-    <section class="form-section">
-      <!-- Register Form -->
-      <div class="form-card">
-        <h2>Register</h2>
-        <form>
-          <input type="text" placeholder="Full Name" required>
-          <input type="email" placeholder="Email" required>
-          <input type="password" placeholder="Create Password" required>
-          <button type="submit">Register</button>
-        </form>
+    <h2>Our Services</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>In-Home Care</h3>
+        <p>Professional nurses available for full-time and part-time care.</p>
       </div>
-
-      <!-- Sign In Form -->
-      <div class="form-card">
-        <h2>Sign In</h2>
-        <form>
-          <input type="email" placeholder="Email" required>
-          <input type="password" placeholder="Password" required>
-          <button type="submit">Sign In</button>
-        </form>
+      <div class="card">
+        <h3>Maternity Support</h3>
+        <p>Trusted support for new and expecting mothers at home.</p>
       </div>
-    </section>
+      <div class="card">
+        <h3>Geriatric Care</h3>
+        <p>Gentle and expert assistance for your loved seniors.</p>
+      </div>
+    </div>
   </div>
+
+  <!-- Register Form -->
+  <form class="auth-form">
+    <h2>Register</h2>
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="password" placeholder="Password" required>
+    <button type="submit">Register</button>
+  </form>
+
+  <!-- Sign In Form -->
+  <form class="auth-form">
+    <h2>Sign In</h2>
+    <input type="email" placeholder="Email" required>
+    <input type="password" placeholder="Password" required>
+    <button type="submit">Sign In</button>
+  </form>
 
   <!-- Footer -->
   <footer>
     &copy; 2025 NyumbaniCare. All rights reserved.
   </footer>
 
-  <!-- Sidebar Script -->
+  <!-- Sidebar JS -->
   <script>
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
 
     function toggleSidebar() {
-      if (sidebar.style.left === "0px") {
-        sidebar.style.left = "-260px";
-        overlay.style.width = "0%";
-      } else {
-        sidebar.style.left = "0px";
-        overlay.style.width = "100%";
-      }
+      sidebar.style.left = sidebar.style.left === "0px" ? "-250px" : "0px";
+      overlay.style.width = overlay.style.width === "100%" ? "0" : "100%";
     }
 
     function closeSidebar() {
-      sidebar.style.left = "-260px";
-      overlay.style.width = "0%";
+      sidebar.style.left = "-250px";
+      overlay.style.width = "0";
     }
 
-    // Auto-close sidebar if user taps outside it
-    document.addEventListener("click", function(event) {
-      if (!sidebar.contains(event.target) && !event.target.classList.contains("menu-btn")) {
+    document.addEventListener("click", function (e) {
+      if (!sidebar.contains(e.target) && !e.target.classList.contains("menu-btn")) {
         closeSidebar();
       }
     });
   </script>
 
 </body>
-            </html>
+    </html>a
