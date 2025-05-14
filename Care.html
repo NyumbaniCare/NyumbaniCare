@@ -2,61 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-   <style>
-    nav{
-      background: #004d3d;
-      display: flex;
-      justify-content: center;
-    }
-    nav a {
-      color: white;
-      padding: 14px 20px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    nav a:hover {
-      background-color: #006a56;
-    }
-    
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>NyumbaniCare</h1>
-  <p>We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
-</header>
-
-<nav>
-  <a href="index.html">Home</a>
-  <a href="About.html">About Us</a>
-  <a href="Care.html">Request Care</a>
-  <a href="#contact">Contact</a>
-  <a href="Nurse.html">register</a>
-  
-</nav>
+  <title>NyumbaniCare - Request Care</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-  <title>NyumbaniCare Payment</title>
-  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: Arial, sans-serif;
       background: #f0f8f5;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background-color: #004d3d;
+      padding: 20px;
+      width: 220px;
+      min-height: 100vh;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .sidebar h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .sidebar a {
+      color: white;
+      display: block;
+      text-decoration: none;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .sidebar a:hover {
+      background-color: #006a56;
+    }
+
+    .content {
+      flex: 1;
       padding: 20px;
     }
+
     .container {
-      max-width: 700px;
-      margin: auto;
       background: #fff;
       padding: 30px;
       border-radius: 10px;
+      max-width: 700px;
+      margin: auto;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
+
     h2, h3 {
       color: #25d366;
+      margin-bottom: 20px;
     }
+
     label {
       font-weight: bold;
     }
+
     input, select {
       width: 100%;
       padding: 10px;
@@ -64,6 +76,7 @@
       border: 1px solid #ccc;
       border-radius: 6px;
     }
+
     button {
       background: #25d366;
       color: white;
@@ -74,113 +87,135 @@
       font-size: 16px;
       cursor: pointer;
     }
+
     .payment-details {
       margin-top: 20px;
       background: #f5f5f5;
       padding: 15px;
       border-radius: 6px;
     }
+
     .hidden {
       display: none;
+    }
+
+    /* Mobile view */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        text-align: center;
+        min-height: auto;
+      }
+
+      .sidebar a {
+        display: inline-block;
+        margin: 5px 10px;
+      }
+
+      .container {
+        margin-top: 20px;
+      }
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <h2>Request Home Medical Care</h2>
-  <form id="careForm" onsubmit="handleSubmit(event)">
-    <label for="name">Full Name:</label>
-    <input type="text" id="name" required>
-
-    <label for="phone">Phone Number:</label>
-    <input type="text" id="phone" required>
-
-    <label for="location">Location:</label>
-    <input type="text" id="location" required>
-
-    <label for="careType">Type of Care Needed:</label>
-    <select id="careType" required>
-      <option value="">Select Care Type</option>
-      <option value="neonatal">Neonatal Care – TZS 25,000</option>
-      <option value="maternity">Maternity Care – TZS 25,000</option>
-      <option value="general">General Nursing – TZS 25,000</option>
-      <option value="pediatrics">Pediatrics – TZS 25,000</option>
-      <option value="geriatric">Geriatric Care – TZS 25,000</option>
-    </select>
-
-    <label for="condition">Patient's Condition:</label>
-    <select id="condition" required>
-      <option value="critical">Critical</option>
-      <option value="fair">Fair</option>
-      <option value="other">Other</option>
-    </select>
-
-    <button type="submit">Submit & Get Payment Info</button>
-  </form>
-
-  <div id="paymentInfo" class="payment-details hidden">
-    <h3>Payment Methods</h3>
-    <p>Please pay <strong id="priceDisplay"></strong> using any of the options below:</p>
-
-    <ul>
-      <li><strong>M-Pesa:</strong><br>
-        Phone: +255 740 489 863<br>
-        Account Name: DAUDI DAUDI</li><br>
-
-      <li><strong>HaloPesa:</strong><br>
-        Phone: +255 611 069 297<br>
-        Account Name: DAUDI DAUDI</li><br>
-
-      <li><strong>Binance Pay:</strong><br>
-        Pay ID: 1040367922<br>
-        Account Name: Nyumbani Care</li>
-    </ul>
-
-    <p><strong>After payment</strong>, please confirm via:</p>
-    <a id="whatsAppLink" target="_blank" style="display:inline-block; margin-right: 10px;">
-      <button style="background:#128C7E;">Confirm on WhatsApp</button>
-    </a>
-    <a id="emailLink" target="_blank">
-      <button style="background:#0072c6;">Confirm by Email</button>
-    </a>
+  <div class="sidebar">
+    <h1>NyumbaniCare</h1>
+    <a href="index.html">Home</a>
+    <a href="About.html">About Us</a>
+    <a href="Care.html">Request Care</a>
+    <a href="#contact">Contact</a>
+    <a href="Nurse.html">Register</a>
   </div>
-</div>
 
-<script>
-  const carePrices = {
-    neonatal: 35000,
-    maternity: 50000,
-    general: 30000,
-    pediatrics: 45000,
-    geriatric: 60000
-  };
+  <div class="content">
+    <div class="container">
+      <h2>Request Home Medical Care</h2>
+      <form id="careForm" onsubmit="handleSubmit(event)">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" required>
 
-  function handleSubmit(event) {
-    event.preventDefault();
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" required>
 
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const location = document.getElementById("location").value;
-    const careType = document.getElementById("careType").value;
-    const condition = document.getElementById("condition").value;
+        <label for="location">Location:</label>
+        <input type="text" id="location" required>
 
-    const amount = carePrices[careType];
-    const careText = document.getElementById("careType").selectedOptions[0].text;
+        <label for="careType">Type of Care Needed:</label>
+        <select id="careType" required>
+          <option value="">Select Care Type</option>
+          <option value="neonatal">Neonatal Care – TZS 25,000</option>
+          <option value="maternity">Maternity Care – TZS 25,000</option>
+          <option value="general">General Nursing – TZS 25,000</option>
+          <option value="pediatrics">Pediatrics – TZS 25,000</option>
+          <option value="geriatric">Geriatric Care – TZS 25,000</option>
+        </select>
 
-    // Display payment section
-    document.getElementById("priceDisplay").innerText = `TZS ${amount.toLocaleString()}`;
-    document.getElementById("paymentInfo").classList.remove("hidden");
+        <label for="condition">Patient's Condition:</label>
+        <select id="condition" required>
+          <option value="critical">Critical</option>
+          <option value="fair">Fair</option>
+          <option value="other">Other</option>
+        </select>
 
-    const message = `Hello NyumbaniCare, I have submitted a care request:\n\nName: ${name}\nPhone: ${phone}\nLocation: ${location}\nCare Type: ${careText}\nCondition: ${condition}\nPayment Amount: TZS ${amount.toLocaleString()}`;
+        <button type="submit">Submit & Get Payment Info</button>
+      </form>
 
-    // WhatsApp confirmation
-    document.getElementById("whatsAppLink").href = `https://wa.me/255611069297?text=${encodeURIComponent(message)}`;
+      <div id="paymentInfo" class="payment-details hidden">
+        <h3>Payment Methods</h3>
+        <p>Please pay <strong id="priceDisplay"></strong> using any of the options below:</p>
+        <ul>
+          <li><strong>M-Pesa:</strong> +255 740 489 863 — DAUDI DAUDI</li><br>
+          <li><strong>HaloPesa:</strong> +255 611 069 297 — DAUDI DAUDI</li><br>
+          <li><strong>Binance Pay:</strong> Pay ID: 1040367922 — Nyumbani Care</li>
+        </ul>
 
-    // Email confirmation
-    document.getElementById("emailLink").href = `mailto:?subject=NyumbaniCare Payment Confirmation&body=${encodeURIComponent(message)}`;
-  }
-</script>
+        <p><strong>After payment</strong>, please confirm via:</p>
+        <a id="whatsAppLink" target="_blank" style="display:inline-block; margin-right: 10px;">
+          <button style="background:#128C7E;">Confirm on WhatsApp</button>
+        </a>
+        <a id="emailLink" target="_blank">
+          <button style="background:#0072c6;">Confirm by Email</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const carePrices = {
+      neonatal: 25000,
+      maternity: 25000,
+      general: 25000,
+      pediatrics: 25000,
+      geriatric: 25000
+    };
+
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const location = document.getElementById("location").value;
+      const careType = document.getElementById("careType").value;
+      const condition = document.getElementById("condition").value;
+
+      const amount = carePrices[careType];
+      const careText = document.getElementById("careType").selectedOptions[0].text;
+
+      document.getElementById("priceDisplay").innerText = `TZS ${amount.toLocaleString()}`;
+      document.getElementById("paymentInfo").classList.remove("hidden");
+
+      const message = `Hello NyumbaniCare, I have submitted a care request:\n\nName: ${name}\nPhone: ${phone}\nLocation: ${location}\nCare Type: ${careText}\nCondition: ${condition}\nPayment Amount: TZS ${amount.toLocaleString()}`;
+
+      document.getElementById("whatsAppLink").href = `https://wa.me/255611069297?text=${encodeURIComponent(message)}`;
+      document.getElementById("emailLink").href = `mailto:?subject=NyumbaniCare Payment Confirmation&body=${encodeURIComponent(message)}`;
+    }
+  </script>
 
 </body>
-</html>
+  </html>
