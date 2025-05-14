@@ -1,161 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NyumbaniCare - Homepage</title>
-  <style>
-    nav {
-      background: #004d3d;  /* Dark Green */
-      display: flex;
-      justify-content: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyumbani Care - Home</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F3F6F9;
+            color: #333;
+        }
 
-    nav a {
-      color: white;
-      padding: 14px 20px;
-      text-decoration: none;
-      display: inline-block;
-    }
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            background-color: #2C3E50;
+            color: white;
+            padding: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
 
-    nav a:hover {
-      background-color: #006a56; /* Lighter Green */
-    }
+        .sidebar h2 {
+            text-align: center;
+        }
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f5f4;
-      color: #333;
-    }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
 
-    header {
-      background-color: #007b5e; /* Green background */
-      color: white;
-      text-align: center;
-      padding: 50px 20px;
-    }
+        .sidebar ul li {
+            padding: 10px 0;
+        }
 
-    header h1 {
-      margin: 0;
-      font-size: 3rem;
-    }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            font-size: 18px;
+        }
 
-    header p {
-      font-size: 1.2rem;
-    }
+        /* Toggle Button */
+        .toggle-btn {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #3498DB;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
 
-    .about-section {
-      background-color: #007b5e; /* Green About Section */
-      color: white;
-      padding: 60px 20px;
-    }
+        /* Main Content */
+        main {
+            margin-left: 260px;
+            padding: 20px;
+            text-align: center;
+        }
 
-    .about-container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+        h1 {
+            color: #2C3E50;
+        }
 
-    .about-container h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
 
-    .about-container h3 {
-      font-size: 1.8rem;
-      margin-top: 30px;
-    }
+            .toggle-btn {
+                display: block;
+            }
 
-    .about-container p,
-    .about-container ul {
-      font-size: 1.1rem;
-      line-height: 1.7;
-    }
-
-    .about-container ul {
-      padding-left: 20px;
-    }
-
-    .sidebar {
-      background-color: #004d3d; /* Sidebar background color */
-      width: 250px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      padding-top: 20px;
-    }
-
-    .sidebar a {
-      color: white;
-      display: block;
-      padding: 14px 20px;
-      text-decoration: none;
-    }
-
-    .sidebar a:hover {
-      background-color: #006a56; /* Sidebar item hover color */
-    }
-
-    .main-content {
-      margin-left: 270px;
-      padding: 20px;
-    }
-  </style>
+            main {
+                margin-left: 0;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <h1>NyumbaniCare</h1>
-  <p>We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
-</header>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="About.html">About Us</a>
-  <a href="Care.html">Request Care</a>
-  <a href="#contact">Contact</a>
-  <a href="Nurse.html">Register</a>
-</nav>
-
-<div class="sidebar">
-  <a href="index.html">Home</a>
-  <a href="About.html">About Us</a>
-  <a href="Care.html">Request Care</a>
-  <a href="#contact">Contact</a>
-  <a href="Nurse.html">Register</a>
-</div>
-
-<div class="main-content">
-  <section class="about-section">
-    <div class="about-container">
-      <h2>About NyumbaniCare</h2>
-      <p><strong>NyumbaniCare</strong> is a Tanzanian home care solution dedicated to serving individuals who are unable or prefer not to visit hospitals. Our mission is to make quality healthcare accessible and convenient for everyone, right in the comfort of their homes.</p>
-      
-      <h3>Headquarters</h3>
-      <p>We operate from <strong>Dar es Salaam</strong>, with our primary care services anchored at the renowned <strong>Muhimbili National Hospital</strong> in Upanga West, Ilala District. This institution stands as Tanzania’s national referral hospital and a leading academic and research hub in the region.</p>
-
-      <h3>Our Services</h3>
-      <ul>
-        <li>Home-Based Medical Care: Personalized care delivered at home.</li>
-        <li>Nursing Services: Professional nursing support tailored to individual needs.</li>
-        <li>Physiotherapy: Rehabilitative services to aid mobility and recovery.</li>
-        <li>Palliative Care: Comfort and support for those with serious health conditions.</li>
-        <li>Maternal and Neonatal Care: Specialized attention for mothers and newborns.</li>
-        <li>Geriatric Care: Comprehensive care for the elderly.</li>
-      </ul>
-
-      <h3>Why Choose Us?</h3>
-      <ul>
-        <li><strong>Professional Staff:</strong> Qualified experts dedicated to quality care.</li>
-        <li><strong>Convenience:</strong> We deliver care right to your door.</li>
-        <li><strong>Comprehensive Care:</strong> From check-ups to specialized services.</li>
-      </ul>
-
-      <p>At <strong>NyumbaniCare</strong>, we believe in compassionate, patient-centered care that prioritizes your health and well-being.</p>
+    <div class="sidebar" id="sidebar">
+        <h2>Nyumbani Care</h2>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Payments</a></li>
+        </ul>
     </div>
-  </section>
-</div>
+
+    <main>
+        <h1>Welcome to Nyumbani Care</h1>
+        <p>Providing compassionate home care services tailored to your needs.</p>
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.style.transform = sidebar.style.transform === "translateX(-100%)" ? "translateX(0)" : "translateX(-100%)";
+        }
+    </script>
 
 </body>
 </html>
