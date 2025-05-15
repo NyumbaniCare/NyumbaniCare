@@ -19,8 +19,15 @@
       color: white;
       padding: 15px 20px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .menu-toggle {
@@ -127,8 +134,10 @@
 <body>
 
   <header>
-    <div><strong>NyumbaniCare</strong></div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="header-left">
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <div><strong>NyumbaniCare</strong></div>
+    </div>
     <nav id="navMenu">
       <a href="index.html">Home</a>
       <a href="register.html">Nurse Registration</a>
