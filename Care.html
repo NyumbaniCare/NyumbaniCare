@@ -7,6 +7,8 @@
     body {
       font-family: "Lato", sans-serif;
       margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
     }
 
     /* Sidebar */
@@ -26,7 +28,7 @@
     .sidenav a {
       padding: 8px 8px 8px 32px;
       text-decoration: none;
-      font-size: 25px;
+      font-size: 20px;
       color: #f1f1f1;
       display: block;
       transition: 0.3s;
@@ -41,7 +43,6 @@
       top: 0;
       right: 25px;
       font-size: 36px;
-      margin-left: 50px;
     }
 
     /* Menu icon */
@@ -57,14 +58,15 @@
 
     .main {
       padding: 20px;
+      margin-left: 50px;
       transition: margin-left .5s;
-      padding-left: 60px;
     }
 
     /* Form styling */
     form {
       max-width: 600px;
-      background-color: #f9f9f9;
+      margin: auto;
+      background: white;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -76,7 +78,7 @@
       font-weight: bold;
     }
 
-    input, select, textarea, button {
+    input, select, textarea {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
@@ -87,13 +89,28 @@
     button {
       background-color: #111;
       color: white;
-      font-size: 16px;
+      padding: 10px;
       border: none;
+      border-radius: 5px;
+      font-size: 16px;
       cursor: pointer;
+      width: 100%;
     }
 
     button:hover {
       background-color: #f44336;
+    }
+
+    #confirmation {
+      display: none;
+      text-align: center;
+      padding: 15px;
+      background-color: #dff0d8;
+      color: #3c763d;
+      border-radius: 5px;
+      margin: 20px auto;
+      max-width: 600px;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -106,7 +123,7 @@
   <a href="About.html">About</a>
   <a href="Service.html">Services</a>
   <a href="Care.html">Request Care</a>
-  <a href="contact.html">Contact</a>
+  <a href="Contact.html">Contact</a>
 </div>
 
 <!-- Menu Icon -->
@@ -114,19 +131,22 @@
 
 <!-- Main Content -->
 <div class="main">
-  <h1>Request Home Medical Care</h1>
-  <form action="#" method="post">
+  <h2>Request Home Medical Care</h2>
+
+  <div id="confirmation">Thank you! Your request has been received. We will contact you shortly with payment details.</div>
+
+  <form id="careForm">
     <label for="fullName">Full Name:</label>
-    <input type="text" id="fullName" name="fullName" required>
+    <input type="text" id="fullName" required>
 
     <label for="phone">Phone Number:</label>
-    <input type="tel" id="phone" name="phone" required>
+    <input type="tel" id="phone" required>
 
     <label for="location">Location:</label>
-    <input type="text" id="location" name="location" required>
+    <input type="text" id="location" required>
 
     <label for="careType">Type of Care Needed:</label>
-    <select id="careType" name="careType" required>
+    <select id="careType" required>
       <option value="">Select Care Type</option>
       <option value="nursing">Nursing</option>
       <option value="physiotherapy">Physiotherapy</option>
@@ -136,13 +156,13 @@
     </select>
 
     <label for="condition">Patient's Condition:</label>
-    <textarea id="condition" name="condition" placeholder="e.g., Critical, Stable, Recovering" required></textarea>
+    <textarea id="condition" rows="3" placeholder="e.g., Critical, Stable, Recovering" required></textarea>
 
     <button type="submit">Submit & Get Payment Info</button>
   </form>
 </div>
 
-<!-- JavaScript to toggle sidebar -->
+<!-- Scripts -->
 <script>
   function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
@@ -151,7 +171,14 @@
   function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
   }
+
+  document.getElementById("careForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    document.getElementById("confirmation").style.display = "block";
+    document.getElementById("careForm").reset();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 </script>
 
 </body>
-</html>
+      </html>
