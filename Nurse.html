@@ -52,18 +52,21 @@
 
   <h1>NyumbaniCare Nurse Registration</h1>
 
-  <form onsubmit="sendToWhatsApp(); return false;">
+  <form action="https://formsubmit.co/carenyumbani@gmail.com" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+
     <label for="fullname">Full Name *</label>
-    <input type="text" id="fullname" required>
+    <input type="text" name="Full Name" id="fullname" required>
 
     <label for="email">Email Address *</label>
-    <input type="email" id="email" required>
+    <input type="email" name="Email" id="email" required>
 
     <label for="phone">Phone Number *</label>
-    <input type="text" id="phone" required>
+    <input type="text" name="Phone" id="phone" required>
 
     <label for="qualification">Qualifications *</label>
-    <select id="qualification" required>
+    <select name="Qualification" id="qualification" required>
       <option value="Certificate">Certificate</option>
       <option value="Diploma">Diploma</option>
       <option value="Degree">Degree</option>
@@ -71,7 +74,7 @@
     </select>
 
     <label for="specialization">Specialization *</label>
-    <select id="specialization" required>
+    <select name="Specialization" id="specialization" required>
       <option value="Neonatal Care">Neonatal Care</option>
       <option value="Maternity Care">Maternity Care</option>
       <option value="General Nursing">General Nursing</option>
@@ -82,37 +85,25 @@
     </select>
 
     <label for="availability">Availability *</label>
-    <select id="availability" required>
+    <select name="Availability" id="availability" required>
       <option value="Full Time">Full Time</option>
       <option value="Part Time">Part Time</option>
     </select>
 
+    <label for="nursing_id">Nursing ID (for students)</label>
+    <input type="file" name="Nursing ID" id="nursing_id">
+
+    <label for="nursing_certificate">Nursing Certificate *</label>
+    <input type="file" name="Nursing Certificate" id="nursing_certificate" required>
+
+    <label for="nursing_license">Nursing License (Optional)</label>
+    <input type="file" name="Nursing License" id="nursing_license">
+
+    <label for="resume">Upload Resume or Recommendation Letter (Optional)</label>
+    <input type="file" name="Resume or Recommendation Letter" id="resume">
+
     <button type="submit">Submit Registration</button>
   </form>
-
-  <script>
-    function sendToWhatsApp() {
-      const name = document.getElementById("fullname").value;
-      const email = document.getElementById("email").value;
-      const phone = document.getElementById("phone").value;
-      const qualification = document.getElementById("qualification").value;
-      const specialization = document.getElementById("specialization").value;
-      const availability = document.getElementById("availability").value;
-
-      const message = `New Nurse Registration:%0A` +
-        `Full Name: ${name}%0A` +
-        `Email: ${email}%0A` +
-        `Phone: ${phone}%0A` +
-        `Qualification: ${qualification}%0A` +
-        `Specialization: ${specialization}%0A` +
-        `Availability: ${availability}`;
-
-      const whatsappNumber = "255740489863"; // Replace with your WhatsApp number
-      const url = `https://wa.me/${whatsappNumber}?text=${message}`;
-
-      window.open(url, '_blank');
-    }
-  </script>
 
 </body>
 </html>
