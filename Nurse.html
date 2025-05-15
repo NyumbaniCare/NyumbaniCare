@@ -2,76 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nurse Registration | NyumbaniCare</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
+      font-family: Arial, sans-serif;
     }
 
     header {
       background-color: #2c3e50;
       color: white;
+      display: flex;
+      align-items: center;
       padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
 
     .menu-toggle {
       font-size: 24px;
       cursor: pointer;
-      display: none;
+      margin-right: 15px;
     }
 
-    nav {
-      display: flex;
-      gap: 15px;
+    .sidebar {
+      height: 100%;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: -250px;
+      background-color: #2c3e50;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
     }
 
-    nav a {
-      color: white;
+    .sidebar a {
+      padding: 12px 25px;
       text-decoration: none;
+      color: white;
+      display: block;
     }
 
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-
-      nav {
-        display: none;
-        flex-direction: column;
-        background-color: #2c3e50;
-        width: 100%;
-        padding: 10px 0;
-      }
-
-      nav.active {
-        display: flex;
-      }
-
-      nav a {
-        padding: 10px 20px;
-      }
+    .sidebar a:hover {
+      background-color: #34495e;
     }
 
     .container {
-      padding: 30px 20px;
-      max-width: 800px;
-      margin: auto;
+      margin: 20px auto;
+      max-width: 700px;
+      padding: 20px;
     }
 
     h1 {
@@ -89,18 +68,13 @@
       font-weight: bold;
     }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    select,
-    input[type="file"] {
+    input, select {
       padding: 8px;
-      border: 1px solid #ccc;
       border-radius: 4px;
-      width: 100%;
+      border: 1px solid #ccc;
     }
 
-    .checkbox-group {
+    .checkbox-group, .radio-group {
       display: flex;
       flex-direction: column;
       gap: 5px;
@@ -115,16 +89,6 @@
       cursor: pointer;
     }
 
-    button:hover {
-      background-color: #219150;
-    }
-
-    .section-title {
-      font-size: 1.1em;
-      margin-top: 20px;
-      color: #333;
-    }
-
     .error {
       color: red;
       font-size: 0.9em;
@@ -134,36 +98,37 @@
 <body>
 
   <header>
-    <div class="header-left">
-      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-      <div><strong>NyumbaniCare</strong></div>
-    </div>
-    <nav id="navMenu">
-      <a href="index.html">Home</a>
-      <a href="register.html">Nurse Registration</a>
-      <a href="about.html">About</a>
-      <a href="request.html">Request Care</a>
-      <a href="contact.html">Contact</a>
-      <a href="payments.html">Payments</a>
-    </nav>
+    <span class="menu-toggle" onclick="toggleSidebar()">☰</span>
+    <h2 style="margin: 0;">NyumbaniCare</h2>
   </header>
+
+  <div id="sidebar" class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="register.html">Nurse Registration</a>
+    <a href="about.html">About</a>
+    <a href="request.html">Request Care</a>
+    <a href="contact.html">Contact</a>
+    <a href="payments.html">Payments</a>
+  </div>
 
   <div class="container">
     <h1>Nurse Registration</h1>
     <p>Please fill in the details below to register as a nurse for NyumbaniCare. We look forward to working with you!</p>
 
-    <form id="nurseForm">
+    <!-- Replace "youremail@example.com" with your actual email -->
+    <form action="https://formsubmit.co/Carenyumbani@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="return validateProofs()">
+      
       <label>Full Name *</label>
-      <input type="text" name="fullName" required>
+      <input type="text" name="Full Name" required>
 
       <label>Email Address *</label>
-      <input type="email" name="email" required>
+      <input type="email" name="Email" required>
 
       <label>Phone Number *</label>
-      <input type="tel" name="phone" required>
+      <input type="tel" name="Phone Number" required>
 
       <label>Qualifications *</label>
-      <select name="qualification" required>
+      <select name="Qualification" required>
         <option value="">-- Select --</option>
         <option>Certificate</option>
         <option>Diploma</option>
@@ -173,57 +138,62 @@
 
       <label>Specialization *</label>
       <div class="checkbox-group">
-        <label><input type="checkbox" name="specialization" value="Neonatal Care"> Neonatal Care</label>
-        <label><input type="checkbox" name="specialization" value="Maternity Care"> Maternity Care</label>
-        <label><input type="checkbox" name="specialization" value="General Nursing"> General Nursing</label>
-        <label><input type="checkbox" name="specialization" value="Pediatrics"> Pediatrics</label>
-        <label><input type="checkbox" name="specialization" value="Geriatric Care"> Geriatric Care</label>
-        <label><input type="checkbox" name="specialization" value="Physiotherapy"> Physiotherapy</label>
-        <label><input type="checkbox" name="specialization" value="Mental Health"> Mental Health</label>
+        <label><input type="checkbox" name="Specialization[]" value="Neonatal Care"> Neonatal Care</label>
+        <label><input type="checkbox" name="Specialization[]" value="Maternity Care"> Maternity Care</label>
+        <label><input type="checkbox" name="Specialization[]" value="General Nursing"> General Nursing</label>
+        <label><input type="checkbox" name="Specialization[]" value="Pediatrics"> Pediatrics</label>
+        <label><input type="checkbox" name="Specialization[]" value="Geriatric Care"> Geriatric Care</label>
+        <label><input type="checkbox" name="Specialization[]" value="Physiotherapy"> Physiotherapy</label>
+        <label><input type="checkbox" name="Specialization[]" value="Mental Health"> Mental Health</label>
       </div>
 
       <label>Availability *</label>
-      <div class="checkbox-group">
-        <label><input type="radio" name="availability" value="Full Time" required> Full Time</label>
-        <label><input type="radio" name="availability" value="Part Time"> Part Time</label>
+      <div class="radio-group">
+        <label><input type="radio" name="Availability" value="Full Time" required> Full Time</label>
+        <label><input type="radio" name="Availability" value="Part Time"> Part Time</label>
       </div>
 
-      <div class="section-title">Proof of Profession (Upload at least one)</div>
-      <div id="proofError" class="error"></div>
+      <label>Proof of Profession (at least one required)</label>
+      <div class="error" id="proofError"></div>
 
       <label>Nursing ID (for students)</label>
-      <input type="file" name="nursingId" id="nursingId">
+      <input type="file" name="Nursing ID" id="nursingId">
 
       <label>Nursing Certificate</label>
-      <input type="file" name="certificate" id="certificate">
+      <input type="file" name="Certificate" id="certificate">
 
       <label>Nursing License</label>
-      <input type="file" name="license" id="license">
+      <input type="file" name="License" id="license">
 
       <label>Upload Resume or Recommendation Letter</label>
-      <input type="file" name="resume">
+      <input type="file" name="Resume">
+
+      <!-- Protect from spam -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
 
       <button type="submit">Submit Registration</button>
     </form>
   </div>
 
   <script>
-    function toggleMenu() {
-      document.getElementById('navMenu').classList.toggle('active');
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.left = sidebar.style.left === "0px" ? "-250px" : "0px";
     }
 
-    document.getElementById('nurseForm').addEventListener('submit', function(e) {
+    function validateProofs() {
       const id = document.getElementById('nursingId').files.length;
       const cert = document.getElementById('certificate').files.length;
       const license = document.getElementById('license').files.length;
 
       if (id + cert + license === 0) {
-        e.preventDefault();
-        document.getElementById('proofError').textContent = "Please upload at least one document under Proof of Profession.";
-      } else {
-        document.getElementById('proofError').textContent = "";
+        document.getElementById('proofError').textContent = "Please upload at least one document.";
+        return false;
       }
-    });
+
+      return true;
+    }
   </script>
 
 </body>
