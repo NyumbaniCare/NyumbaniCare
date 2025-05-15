@@ -17,42 +17,78 @@
       background: #f0f8f5;
       display: flex;
       min-height: 100vh;
-    }
-
     .sidebar {
-      background-color: #004d3d;
-      padding: 20px;
-      width: 220px;
-      min-height: 100vh;
-      color: white;
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
-    }
+  width: 280px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #2C3E50;
+  color: white;
+  padding: 40px 20px;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0);
+  z-index: 1000;
+}
 
-    .sidebar h1 { font-size: 24px; margin-bottom: 20px; color: white; }
+.sidebar h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
 
-    .sidebar a {
-      color: white;
-      display: block;
-      text-decoration: none;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 5px;
-    }
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+}
 
-    .sidebar a:hover { background-color: #006a56; }
+.sidebar ul li {
+  padding: 15px 0;
+}
 
-    .toggle-btn {
-      display: none;
-      background: #004d3d;
-      color: white;
-      padding: 10px 20px;
-      font-size: 18px;
-      border: none;
-      width: 100%;
-      text-align: left;
-      cursor: pointer;
-    }
+.sidebar ul li a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  background-color: #4F6D7A;
+}
+
+.toggle-btn {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #2C3E50;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1001;
+  border-radius: 50%;
+}
+
+.toggle-btn:hover {
+  background-color: #4F6D7A;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .toggle-btn {
+    display: block;
+  }
+}
 
     .content {
       flex: 1;
@@ -139,16 +175,19 @@
 
 <body>
 
-  <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+  <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
 
-  <div class="sidebar" id="sidebar">
-    <h1>NyumbaniCare</h1>
-    <a href="index.html">Home</a>
-    <a href="About.html">About Us</a>
-    <a href="Care.html">Request Care</a>
-    <a href="#contact">Contact</a>
-    <a href="Nurse.html">Register</a>
-  </div>
+<div class="sidebar" id="sidebar">
+  <h2>NyumbaniCare</h2>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="Nurse.html">Nurse registration</a></li>
+    <li><a href="About.html">About</a></li>
+    <li><a href="Care.html">Request care</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">Payments</a></li>
+  </ul>
+</div>
 
   <div class="content">
     <div class="container">
@@ -251,6 +290,31 @@
     function toggleSidebar() {
       document.getElementById("sidebar").classList.toggle("active");
     }
+  </script>
+  <script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const main = document.getElementById("main-content");
+    const isOpen = sidebar.style.transform === "translateX(0%)";
+
+    sidebar.style.transform = isOpen ? "translateX(-100%)" : "translateX(0%)";
+    if (main) {
+      main.style.marginLeft = isOpen ? "0" : "280px";
+    }
+  }
+
+  document.addEventListener("click", function (event) {
+    const sidebar = document.getElementById("sidebar");
+    const toggleBtn = document.querySelector(".toggle-btn");
+
+    if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+      sidebar.style.transform = "translateX(-100%)";
+      const main = document.getElementById("main-content");
+      if (main) {
+        main.style.marginLeft = "0";
+      }
+    }
+  });
   </script>
 </body>
   </html>
