@@ -10,11 +10,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: Arial, sans-serif;
@@ -69,7 +65,7 @@
 
     .toggle-btn {
       display: none;
-      position: absolute;
+      position: fixed;
       top: 20px;
       left: 20px;
       background-color: #2C3E50;
@@ -78,7 +74,7 @@
       padding: 15px;
       font-size: 20px;
       cursor: pointer;
-      z-index: 1001;
+      z-index: 1100;
       border-radius: 50%;
     }
 
@@ -86,32 +82,10 @@
       background-color: #4F6D7A;
     }
 
-    @media (max-width: 768px) {
-      .sidebar {
-        transform: translateX(-100%);
-      }
-
-      .sidebar.active {
-        transform: translateX(0);
-      }
-
-      .toggle-btn {
-        display: block;
-      }
-
-      body {
-        flex-direction: column;
-      }
-
-      .content {
-        margin-top: 60px;
-      }
-    }
-
     .content {
       flex: 1;
-      padding: 20px;
       margin-left: 280px;
+      padding: 20px;
     }
 
     .container {
@@ -120,17 +94,12 @@
       border-radius: 10px;
       max-width: 700px;
       margin: auto;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    h2, h3 {
-      color: #25d366;
-      margin-bottom: 20px;
-    }
+    h2, h3 { color: #25d366; margin-bottom: 20px; }
 
-    label {
-      font-weight: bold;
-    }
+    label { font-weight: bold; }
 
     input, select {
       width: 100%;
@@ -158,13 +127,30 @@
       border-radius: 6px;
     }
 
-    .hidden {
-      display: none;
+    .hidden { display: none; }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .toggle-btn {
+        display: block;
+      }
+
+      .content {
+        margin-left: 0;
+        margin-top: 80px;
+      }
     }
   </style>
 
   <script>
-    // Firebase Configuration (REPLACE WITH YOUR OWN)
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
       authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -177,78 +163,7 @@
 
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
-  </script>
-</head>
 
-<body>
-  <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-
-  <div class="sidebar" id="sidebar">
-    <h2>NyumbaniCare</h2>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="Nurse.html">Nurse registration</a></li>
-      <li><a href="About.html">About</a></li>
-      <li><a href="Care.html">Request care</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">Payments</a></li>
-    </ul>
-  </div>
-
-  <div class="content" id="main-content">
-    <div class="container">
-      <h2>Request Home Medical Care</h2>
-      <form id="careForm" onsubmit="handleSubmit(event)">
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" required>
-
-        <label for="phone">Phone Number:</label>
-        <input type="text" id="phone" required>
-
-        <label for="location">Location:</label>
-        <input type="text" id="location" required>
-
-        <label for="careType">Type of Care Needed:</label>
-        <select id="careType" required>
-          <option value="">Select Care Type</option>
-          <option value="neonatal">Neonatal Care – TZS 25,000</option>
-          <option value="maternity">Maternity Care – TZS 25,000</option>
-          <option value="general">General Nursing – TZS 25,000</option>
-          <option value="pediatrics">Pediatrics – TZS 25,000</option>
-          <option value="geriatric">Geriatric Care – TZS 25,000</option>
-        </select>
-
-        <label for="condition">Patient's Condition:</label>
-        <select id="condition" required>
-          <option value="critical">Critical</option>
-          <option value="fair">Fair</option>
-          <option value="other">Other</option>
-        </select>
-
-        <button type="submit">Submit & Get Payment Info</button>
-      </form>
-
-      <div id="paymentInfo" class="payment-details hidden">
-        <h3>Payment Methods</h3>
-        <p>Please pay <strong id="priceDisplay"></strong> using any of the options below:</p>
-        <ul>
-          <li><strong>M-Pesa:</strong> +255 740 489 863 — DAUDI DAUDI</li><br>
-          <li><strong>HaloPesa:</strong> +255 611 069 297 — DAUDI DAUDI</li><br>
-          <li><strong>Binance Pay:</strong> Pay ID: 1040367922 — Nyumbani Care</li>
-        </ul>
-
-        <p><strong>After payment</strong>, please confirm via:</p>
-        <a id="whatsAppLink" target="_blank" style="display:inline-block; margin-right: 10px;">
-          <button style="background:#128C7E;">Confirm on WhatsApp</button>
-        </a>
-        <a id="emailLink" target="_blank">
-          <button style="background:#0072c6;">Confirm by Email</button>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <script>
     const carePrices = {
       neonatal: 25000,
       maternity: 25000,
@@ -294,15 +209,74 @@
     function toggleSidebar() {
       document.getElementById("sidebar").classList.toggle("active");
     }
-
-    document.addEventListener("click", function (event) {
-      const sidebar = document.getElementById("sidebar");
-      const toggleBtn = document.querySelector(".toggle-btn");
-
-      if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
-        sidebar.classList.remove("active");
-      }
-    });
   </script>
+</head>
+
+<body>
+  <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+  <div class="sidebar" id="sidebar">
+    <h2>NyumbaniCare</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Nurse.html">Nurse registration</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="Care.html">Request care</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Payments</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <h2>Request Home Medical Care</h2>
+      <form id="careForm" onsubmit="handleSubmit(event)">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" required>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" required>
+
+        <label for="careType">Type of Care Needed:</label>
+        <select id="careType" required>
+          <option value="">Select Care Type</option>
+          <option value="neonatal">Neonatal Care – TZS 25,000</option>
+          <option value="maternity">Maternity Care – TZS 25,000</option>
+          <option value="general">General Nursing – TZS 25,000</option>
+          <option value="pediatrics">Pediatrics – TZS 25,000</option>
+          <option value="geriatric">Geriatric Care – TZS 25,000</option>
+        </select>
+
+        <label for="condition">Patient's Condition:</label>
+        <select id="condition" required>
+          <option value="critical">Critical</option>
+          <option value="fair">Fair</option>
+          <option value="other">Other</option>
+        </select>
+
+        <button type="submit">Submit & Get Payment Info</button>
+      </form>
+
+      <div id="paymentInfo" class="payment-details hidden">
+        <h3>Payment Methods</h3>
+        <p>Please pay <strong id="priceDisplay"></strong> using any of the options below:</p>
+        <ul>
+          <li><strong>M-Pesa:</strong> +255 740 489 863 — DAUDI DAUDI</li><br>
+          <li><strong>HaloPesa:</strong> +255 611 069 297 — DAUDI DAUDI</li><br>
+          <li><strong>Binance Pay:</strong> Pay ID: 1040367922 — Nyumbani Care</li>
+        </ul>
+        <p><strong>After payment</strong>, please confirm via:</p>
+        <a id="whatsAppLink" target="_blank" style="margin-right: 10px;">
+          <button style="background:#128C7E;">Confirm on WhatsApp</button>
+        </a>
+        <a id="emailLink" target="_blank">
+          <button style="background:#0072c6;">Confirm by Email</button>
+        </a>
+      </div>
+    </div>
+  </div>
 </body>
-  </html>
+          </html
