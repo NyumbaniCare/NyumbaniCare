@@ -10,89 +10,108 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: Arial, sans-serif;
       background: #f0f8f5;
       display: flex;
       min-height: 100vh;
+    }
+
     .sidebar {
-  width: 280px;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #2C3E50;
-  color: white;
-  padding: 40px 20px;
-  transition: transform 0.3s ease-in-out;
-  transform: translateX(0);
-  z-index: 1000;
-}
+      width: 280px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #2C3E50;
+      color: white;
+      padding: 40px 20px;
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(0);
+      z-index: 1000;
+    }
 
-.sidebar h2 {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
+    .sidebar h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 30px;
-}
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 30px;
+    }
 
-.sidebar ul li {
-  padding: 15px 0;
-}
+    .sidebar ul li {
+      padding: 15px 0;
+    }
 
-.sidebar ul li a {
-  text-decoration: none;
-  color: white;
-  display: block;
-  font-size: 18px;
-  padding: 10px 20px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-}
+    .sidebar ul li a {
+      text-decoration: none;
+      color: white;
+      display: block;
+      font-size: 18px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
 
-.sidebar ul li a:hover {
-  background-color: #4F6D7A;
-}
+    .sidebar ul li a:hover {
+      background-color: #4F6D7A;
+    }
 
-.toggle-btn {
-  display: none;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background-color: #2C3E50;
-  color: white;
-  border: none;
-  padding: 15px;
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 1001;
-  border-radius: 50%;
-}
+    .toggle-btn {
+      display: none;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #2C3E50;
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1001;
+      border-radius: 50%;
+    }
 
-.toggle-btn:hover {
-  background-color: #4F6D7A;
-}
+    .toggle-btn:hover {
+      background-color: #4F6D7A;
+    }
 
-@media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-  }
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
 
-  .toggle-btn {
-    display: block;
-  }
-}
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .toggle-btn {
+        display: block;
+      }
+
+      body {
+        flex-direction: column;
+      }
+
+      .content {
+        margin-top: 60px;
+      }
+    }
 
     .content {
       flex: 1;
       padding: 20px;
+      margin-left: 280px;
     }
 
     .container {
@@ -101,12 +120,17 @@
       border-radius: 10px;
       max-width: 700px;
       margin: auto;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    h2, h3 { color: #25d366; margin-bottom: 20px; }
+    h2, h3 {
+      color: #25d366;
+      margin-bottom: 20px;
+    }
 
-    label { font-weight: bold; }
+    label {
+      font-weight: bold;
+    }
 
     input, select {
       width: 100%;
@@ -134,25 +158,8 @@
       border-radius: 6px;
     }
 
-    .hidden { display: none; }
-
-    @media (max-width: 768px) {
-      .sidebar {
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        transform: translateX(-100%);
-        z-index: 1000;
-      }
-
-      .sidebar.active { transform: translateX(0); }
-
-      .toggle-btn { display: block; }
-
-      body { flex-direction: column; }
-
-      .content { margin-top: 60px; }
+    .hidden {
+      display: none;
     }
   </style>
 
@@ -174,22 +181,21 @@
 </head>
 
 <body>
-
   <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
 
-<div class="sidebar" id="sidebar">
-  <h2>NyumbaniCare</h2>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="Nurse.html">Nurse registration</a></li>
-    <li><a href="About.html">About</a></li>
-    <li><a href="Care.html">Request care</a></li>
-    <li><a href="#">Contact</a></li>
-    <li><a href="#">Payments</a></li>
-  </ul>
-</div>
+  <div class="sidebar" id="sidebar">
+    <h2>NyumbaniCare</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Nurse.html">Nurse registration</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="Care.html">Request care</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Payments</a></li>
+    </ul>
+  </div>
 
-  <div class="content">
+  <div class="content" id="main-content">
     <div class="container">
       <h2>Request Home Medical Care</h2>
       <form id="careForm" onsubmit="handleSubmit(event)">
@@ -262,7 +268,6 @@
       const amount = carePrices[careType];
       const careText = document.getElementById("careType").selectedOptions[0].text;
 
-      // Save to Firebase
       const requestRef = database.ref("requests").push();
       requestRef.set({
         name,
@@ -274,7 +279,6 @@
         timestamp: new Date().toISOString()
       });
 
-      // Show payment info
       document.getElementById("priceDisplay").innerText = `TZS ${amount.toLocaleString()}`;
       document.getElementById("paymentInfo").classList.remove("hidden");
 
@@ -290,31 +294,15 @@
     function toggleSidebar() {
       document.getElementById("sidebar").classList.toggle("active");
     }
-  </script>
-  <script>
-  function toggleSidebar() {
-    const sidebar = document.getElementById("sidebar");
-    const main = document.getElementById("main-content");
-    const isOpen = sidebar.style.transform === "translateX(0%)";
 
-    sidebar.style.transform = isOpen ? "translateX(-100%)" : "translateX(0%)";
-    if (main) {
-      main.style.marginLeft = isOpen ? "0" : "280px";
-    }
-  }
+    document.addEventListener("click", function (event) {
+      const sidebar = document.getElementById("sidebar");
+      const toggleBtn = document.querySelector(".toggle-btn");
 
-  document.addEventListener("click", function (event) {
-    const sidebar = document.getElementById("sidebar");
-    const toggleBtn = document.querySelector(".toggle-btn");
-
-    if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
-      sidebar.style.transform = "translateX(-100%)";
-      const main = document.getElementById("main-content");
-      if (main) {
-        main.style.marginLeft = "0";
+      if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+        sidebar.classList.remove("active");
       }
-    }
-  });
+    });
   </script>
 </body>
   </html>
