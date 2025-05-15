@@ -2,126 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NyumbaniCare Nurse Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nurse Registration | NyumbaniCare</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f5f4;
+      padding: 0;
     }
-    .sidebar {
-  width: 280px;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #2C3E50;
-  color: white;
-  padding: 40px 20px;
-  transition: transform 0.3s ease-in-out;
-  transform: translateX(0);
-  z-index: 1000;
-}
-
-.sidebar h2 {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 30px;
-}
-
-.sidebar ul li {
-  padding: 15px 0;
-}
-
-.sidebar ul li a {
-  text-decoration: none;
-  color: white;
-  display: block;
-  font-size: 18px;
-  padding: 10px 20px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-}
-
-.sidebar ul li a:hover {
-  background-color: #4F6D7A;
-}
-
-.toggle-btn {
-  display: none;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background-color: #2C3E50;
-  color: white;
-  border: none;
-  padding: 15px;
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 1001;
-  border-radius: 50%;
-}
-
-.toggle-btn:hover {
-  background-color: #4F6D7A;
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-  }
-
-  .toggle-btn {
-    display: block;
-  }
-  }
-
 
     header {
-      width: 100%;
-      text-align: center;
-      padding: 20px;
-      background-color: #ffffff;
-      color: #004d3d;
+      background-color: #2c3e50;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
     }
 
     .container {
+      padding: 30px 20px;
       max-width: 800px;
-      margin: 30px auto;
-      padding: 20px 30px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: auto;
     }
 
-    h1, h2 {
-      margin: 0 0 10px;
-    }
-
-    .description {
-      color: #555;
-      margin-bottom: 30px;
+    h1 {
       text-align: center;
+      color: #2c3e50;
     }
 
-    .form-group {
-      margin-bottom: 20px;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
 
     label {
-      display: block;
-      margin: 20px 0 8px;
       font-weight: bold;
     }
 
@@ -129,165 +51,130 @@
     input[type="email"],
     input[type="tel"],
     select,
-    textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-
     input[type="file"] {
-      margin-top: 10px;
-    }
-
-    .checkbox-group,
-    .radio-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .checkbox-group label,
-    .radio-group label {
-      font-weight: normal;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .submit-btn {
-      background-color: #007b5e;
-      color: white;
-      padding: 14px 24px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1.1rem;
-      cursor: pointer;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
       width: 100%;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    button {
+      background-color: #27ae60;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #219150;
+    }
+
+    .section-title {
+      font-size: 1.1em;
       margin-top: 20px;
-      transition: background-color 0.3s ease;
+      color: #333;
     }
 
-    .submit-btn:hover {
-      background-color: #005845;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        padding: 20px;
-      }
+    .error {
+      color: red;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>NyumbaniCare</h1>
-    <p>We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
+    <div><strong>NyumbaniCare</strong></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="register.html">Nurse Registration</a>
+      <a href="about.html">About</a>
+      <a href="request.html">Request Care</a>
+      <a href="contact.html">Contact</a>
+      <a href="payments.html">Payments</a>
+    </nav>
   </header>
-<button class="toggle-btn" onclick="toggleSidebar()">☰</button>
 
-<div class="sidebar" id="sidebar">
-  <h2>NyumbaniCare</h2>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="Nurse.html">Nurse registration</a></li>
-    <li><a href="About.html">About</a></li>
-    <li><a href="Care.html">Request care</a></li>
-    <li><a href="#">Contact</a></li>
-    <li><a href="#">Payments</a></li>
-  </ul>
-</div>
-  
   <div class="container">
-    <h2 style="color: #007b5e;">Nurse Registration</h2>
-    <p class="description">Please fill in the details below to register as a nurse for NyumbaniCare. We look forward to working with you!</p>
+    <h1>Nurse Registration</h1>
+    <p>Please fill in the details below to register as a nurse for NyumbaniCare. We look forward to working with you!</p>
 
     <form id="nurseForm">
-      <div class="form-group">
-        <label for="fullname">Full Name *</label>
-        <input type="text" id="fullname" name="fullname" required />
+      <label>Full Name *</label>
+      <input type="text" name="fullName" required>
+
+      <label>Email Address *</label>
+      <input type="email" name="email" required>
+
+      <label>Phone Number *</label>
+      <input type="tel" name="phone" required>
+
+      <label>Qualifications *</label>
+      <select name="qualification" required>
+        <option value="">-- Select --</option>
+        <option>Certificate</option>
+        <option>Diploma</option>
+        <option>Degree</option>
+        <option>Masters</option>
+      </select>
+
+      <label>Specialization *</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="specialization" value="Neonatal Care"> Neonatal Care</label>
+        <label><input type="checkbox" name="specialization" value="Maternity Care"> Maternity Care</label>
+        <label><input type="checkbox" name="specialization" value="General Nursing"> General Nursing</label>
+        <label><input type="checkbox" name="specialization" value="Pediatrics"> Pediatrics</label>
+        <label><input type="checkbox" name="specialization" value="Geriatric Care"> Geriatric Care</label>
+        <label><input type="checkbox" name="specialization" value="Physiotherapy"> Physiotherapy</label>
+        <label><input type="checkbox" name="specialization" value="Mental Health"> Mental Health</label>
       </div>
 
-      <div class="form-group">
-        <label for="email">Email Address *</label>
-        <input type="email" id="email" name="email" required />
+      <label>Availability *</label>
+      <div class="checkbox-group">
+        <label><input type="radio" name="availability" value="Full Time" required> Full Time</label>
+        <label><input type="radio" name="availability" value="Part Time"> Part Time</label>
       </div>
 
-      <div class="form-group">
-        <label for="phone">Phone Number *</label>
-        <input type="tel" id="phone" name="phone" required />
-      </div>
+      <div class="section-title">Proof of Profession (Upload at least one)</div>
+      <div id="proofError" class="error"></div>
+      <label>Nursing ID (for students)</label>
+      <input type="file" name="nursingId" id="nursingId">
 
-      <div class="form-group">
-        <label>Qualifications *</label>
-        <div class="radio-group">
-          <label><input type="radio" name="qualification" value="Certificate" required /> Certificate</label>
-          <label><input type="radio" name="qualification" value="Diploma" /> Diploma</label>
-          <label><input type="radio" name="qualification" value="Degree" /> Degree</label>
-          <label><input type="radio" name="qualification" value="Masters" /> Masters</label>
-        </div>
-      </div>
+      <label>Nursing Certificate</label>
+      <input type="file" name="certificate" id="certificate">
 
-      <div class="form-group">
-        <label>Specialization *</label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="specialization" value="Neonatal Care" /> Neonatal Care</label>
-          <label><input type="checkbox" name="specialization" value="Maternity Care" /> Maternity Care</label>
-          <label><input type="checkbox" name="specialization" value="General Nursing" /> General Nursing</label>
-          <label><input type="checkbox" name="specialization" value="Pediatrics" /> Pediatrics</label>
-          <label><input type="checkbox" name="specialization" value="Geriatric Care" /> Geriatric Care</label>
-          <label><input type="checkbox" name="specialization" value="Physiotherapy" /> Physiotherapy</label>
-          <label><input type="checkbox" name="specialization" value="Mental Health" /> Mental Health</label>
-        </div>
-      </div>
+      <label>Nursing License</label>
+      <input type="file" name="license" id="license">
 
-      <div class="form-group">
-        <label>Availability *</label>
-        <div class="radio-group">
-          <label><input type="radio" name="availability" value="Full Time" required /> Full Time</label>
-          <label><input type="radio" name="availability" value="Part Time" /> Part Time</label>
-        </div>
-      </div>
+      <label>Upload Resume or Recommendation Letter</label>
+      <input type="file" name="resume">
 
-      <div class="form-group">
-        <label>Proof of Profession *</label>
-        <input type="file" id="nursing_id" name="nursing_id" accept=".jpg,.png,.pdf" /><br> Nursing ID (for students)<br><br>
-        <input type="file" id="nursing_certificate" name="nursing_certificate" accept=".jpg,.png,.pdf" /><br> Nursing Certificate<br><br>
-        <input type="file" id="nursing_license" name="nursing_license" accept=".jpg,.png,.pdf" /><br> Nursing License<br><br>
-        <label>(Optional)</label>
-        <input type="file" name="resume" accept=".pdf,.doc,.docx" /> Upload Resume or Recommendation Letter
-      </div>
-
-      <button type="submit" class="submit-btn">Submit Registration</button>
+      <button type="submit">Submit Registration</button>
     </form>
   </div>
 
   <script>
-  function toggleSidebar() {
-    const sidebar = document.getElementById("sidebar");
-    const main = document.getElementById("main-content");
-    const isOpen = sidebar.style.transform === "translateX(0%)";
+    document.getElementById('nurseForm').addEventListener('submit', function(e) {
+      const id = document.getElementById('nursingId').files.length;
+      const cert = document.getElementById('certificate').files.length;
+      const license = document.getElementById('license').files.length;
 
-    sidebar.style.transform = isOpen ? "translateX(-100%)" : "translateX(0%)";
-    if (main) {
-      main.style.marginLeft = isOpen ? "0" : "280px";
-    }
-  }
-
-  document.addEventListener("click", function (event) {
-    const sidebar = document.getElementById("sidebar");
-    const toggleBtn = document.querySelector(".toggle-btn");
-
-    if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
-      sidebar.style.transform = "translateX(-100%)";
-      const main = document.getElementById("main-content");
-      if (main) {
-        main.style.marginLeft = "0";
+      if (id + cert + license === 0) {
+        e.preventDefault();
+        document.getElementById('proofError').textContent = "Please upload at least one document under Proof of Profession.";
+      } else {
+        document.getElementById('proofError').textContent = "";
       }
-    }
-  });
+    });
   </script>
+
 </body>
-          </html>
+        </html>
