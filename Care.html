@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <title>NyumbaniCare - Request Care</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: Arial, sans-serif;
@@ -28,11 +29,7 @@
       transition: transform 0.3s ease;
     }
 
-    .sidebar h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
-      color: white;
-    }
+    .sidebar h1 { font-size: 24px; margin-bottom: 20px; color: white; }
 
     .sidebar a {
       color: white;
@@ -43,9 +40,7 @@
       border-radius: 5px;
     }
 
-    .sidebar a:hover {
-      background-color: #006a56;
-    }
+    .sidebar a:hover { background-color: #006a56; }
 
     .toggle-btn {
       display: none;
@@ -73,14 +68,9 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    h2, h3 {
-      color: #25d366;
-      margin-bottom: 20px;
-    }
+    h2, h3 { color: #25d366; margin-bottom: 20px; }
 
-    label {
-      font-weight: bold;
-    }
+    label { font-weight: bold; }
 
     input, select {
       width: 100%;
@@ -108,11 +98,8 @@
       border-radius: 6px;
     }
 
-    .hidden {
-      display: none;
-    }
+    .hidden { display: none; }
 
-    /* Mobile styles */
     @media (max-width: 768px) {
       .sidebar {
         position: fixed;
@@ -123,24 +110,33 @@
         z-index: 1000;
       }
 
-      .sidebar.active {
-        transform: translateX(0);
-      }
+      .sidebar.active { transform: translateX(0); }
 
-      .toggle-btn {
-        display: block;
-      }
+      .toggle-btn { display: block; }
 
-      body {
-        flex-direction: column;
-      }
+      body { flex-direction: column; }
 
-      .content {
-        margin-top: 60px;
-      }
+      .content { margin-top: 60px; }
     }
   </style>
+
+  <script>
+    // Firebase Configuration (REPLACE WITH YOUR OWN)
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+  </script>
 </head>
+
 <body>
 
   <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
@@ -224,10 +220,22 @@
       const location = document.getElementById("location").value;
       const careType = document.getElementById("careType").value;
       const condition = document.getElementById("condition").value;
-
       const amount = carePrices[careType];
       const careText = document.getElementById("careType").selectedOptions[0].text;
 
+      // Save to Firebase
+      const requestRef = database.ref("requests").push();
+      requestRef.set({
+        name,
+        phone,
+        location,
+        careType: careText,
+        condition,
+        amount: `TZS ${amount.toLocaleString()}`,
+        timestamp: new Date().toISOString()
+      });
+
+      // Show payment info
       document.getElementById("priceDisplay").innerText = `TZS ${amount.toLocaleString()}`;
       document.getElementById("paymentInfo").classList.remove("hidden");
 
@@ -235,12 +243,14 @@
 
       document.getElementById("whatsAppLink").href = `https://wa.me/255611069297?text=${encodeURIComponent(message)}`;
       document.getElementById("emailLink").href = `mailto:?subject=NyumbaniCare Payment Confirmation&body=${encodeURIComponent(message)}`;
+
+      alert("Form submitted and saved successfully! Proceed with payment and confirmation.");
+      document.getElementById("careForm").reset();
     }
 
     function toggleSidebar() {
       document.getElementById("sidebar").classList.toggle("active");
     }
   </script>
-
 </body>
-                        </html>
+  </html>
