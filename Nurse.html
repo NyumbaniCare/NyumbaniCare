@@ -8,34 +8,32 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f9f9f9;
+      background: linear-gradient(to bottom right, #66c2cc, #2a75bd);
     }
 
-    /* Sidebar styling */
     .sidenav {
       height: 100%;
       width: 0;
       position: fixed;
+      z-index: 1000;
       top: 0;
       left: 0;
       background-color: #333;
       overflow-x: hidden;
       transition: 0.3s;
       padding-top: 60px;
-      z-index: 1000;
     }
 
     .sidenav a {
-      padding: 12px 20px;
+      padding: 12px 24px;
       text-decoration: none;
       font-size: 18px;
       color: white;
       display: block;
-      transition: 0.2s;
     }
 
     .sidenav a:hover {
-      background: #575757;
+      background-color: #444;
     }
 
     .sidenav .closebtn {
@@ -46,27 +44,32 @@
       color: white;
     }
 
-    /* Top menu icon */
     .menu-icon {
       font-size: 30px;
       cursor: pointer;
       padding: 10px 20px;
-      background: #4CAF50;
+      background: #333;
       color: white;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1001;
+      border-radius: 8px;
     }
 
     h1 {
-      padding-left: 20px;
-      color: #333;
+      text-align: center;
+      color: white;
+      padding-top: 60px;
     }
 
     form {
-      background: #fff;
-      padding: 20px;
-      margin: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      background: white;
       max-width: 600px;
+      margin: 20px auto;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
 
     label {
@@ -79,23 +82,23 @@
       width: 100%;
       padding: 10px;
       margin-top: 5px;
-      border-radius: 5px;
+      border-radius: 6px;
       border: 1px solid #ccc;
     }
 
     button {
       margin-top: 20px;
-      padding: 10px 20px;
-      background: #4CAF50;
-      color: #fff;
+      padding: 12px 24px;
+      background-color: #FF6F61;
+      color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       font-size: 16px;
       cursor: pointer;
     }
 
     button:hover {
-      background: #45a049;
+      background-color: #e35c50;
     }
 
     @media (max-width: 600px) {
@@ -107,10 +110,8 @@
 </head>
 <body>
 
-  <!-- Sidebar toggle button -->
   <span class="menu-icon" onclick="openNav()">☰</span>
 
-  <!-- Sidebar menu -->
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     <a href="index.html">Home</a>
@@ -121,31 +122,31 @@
     <a href="contact.html">Contact</a>
   </div>
 
-  <h1>NyumbaniCare Nurse Registration</h1>
+  <h1>Nurse Registration</h1>
 
   <form action="https://formsubmit.co/carenyumbani@gmail.com" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
 
-    <label for="fullname">Full Name *</label>
-    <input type="text" name="Full Name" id="fullname" required>
+    <label>Full Name *</label>
+    <input type="text" name="Full Name" required>
 
-    <label for="email">Email Address *</label>
-    <input type="email" name="Email" id="email" required>
+    <label>Email Address *</label>
+    <input type="email" name="Email" required>
 
-    <label for="phone">Phone Number *</label>
-    <input type="text" name="Phone" id="phone" required>
+    <label>Phone Number *</label>
+    <input type="text" name="Phone" required>
 
-    <label for="qualification">Qualifications *</label>
-    <select name="Qualification" id="qualification" required>
+    <label>Qualifications *</label>
+    <select name="Qualification" required>
       <option value="Certificate">Certificate</option>
       <option value="Diploma">Diploma</option>
       <option value="Degree">Degree</option>
       <option value="Masters">Masters</option>
     </select>
 
-    <label for="specialization">Specialization *</label>
-    <select name="Specialization" id="specialization" required>
+    <label>Specialization *</label>
+    <select name="Specialization" required>
       <option value="Neonatal Care">Neonatal Care</option>
       <option value="Maternity Care">Maternity Care</option>
       <option value="General Nursing">General Nursing</option>
@@ -155,23 +156,23 @@
       <option value="Mental Health">Mental Health</option>
     </select>
 
-    <label for="availability">Availability *</label>
-    <select name="Availability" id="availability" required>
+    <label>Availability *</label>
+    <select name="Availability" required>
       <option value="Full Time">Full Time</option>
       <option value="Part Time">Part Time</option>
     </select>
 
-    <label for="nursing_id">Nursing ID (for students)</label>
-    <input type="file" name="Nursing ID" id="nursing_id">
+    <label>Nursing ID (for students)</label>
+    <input type="file" name="Nursing ID">
 
-    <label for="nursing_certificate">Nursing Certificate *</label>
-    <input type="file" name="Nursing Certificate" id="nursing_certificate" required>
+    <label>Nursing Certificate *</label>
+    <input type="file" name="Nursing Certificate" required>
 
-    <label for="nursing_license">Nursing License (Optional)</label>
-    <input type="file" name="Nursing License" id="nursing_license">
+    <label>Nursing License (Optional)</label>
+    <input type="file" name="Nursing License">
 
-    <label for="resume">Upload Resume or Recommendation Letter (Optional)</label>
-    <input type="file" name="Resume or Recommendation Letter" id="resume">
+    <label>Upload Resume or Recommendation Letter (Optional)</label>
+    <input type="file" name="Resume or Recommendation Letter">
 
     <button type="submit">Submit Registration</button>
   </form>
@@ -187,4 +188,4 @@
   </script>
 
 </body>
-      </html>
+</html>
