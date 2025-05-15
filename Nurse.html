@@ -13,8 +13,6 @@
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #f0f5f4;
-      display: flex;
-      min-height: 100vh;
     }
 
     /* Top Navigation */
@@ -38,37 +36,6 @@
       background-color: #006a56;
     }
 
-    /* Sidebar */
-    .sidebar {
-      width: 220px;
-      background-color: #00382d;
-      color: white;
-      padding-top: 30px;
-      min-height: 100vh;
-    }
-
-    .sidebar h3 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 1.2rem;
-    }
-
-    .sidebar a {
-      display: block;
-      padding: 12px 20px;
-      color: white;
-      text-decoration: none;
-    }
-
-    .sidebar a:hover {
-      background-color: #005845;
-    }
-
-    .content {
-      flex: 1;
-      padding: 40px;
-    }
-
     header {
       width: 100%;
       text-align: center;
@@ -77,8 +44,17 @@
       color: #004d3d;
     }
 
-    h1 {
-      margin-bottom: 10px;
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px 30px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      margin: 0 0 10px;
     }
 
     .description {
@@ -146,16 +122,7 @@
     }
 
     @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-        height: auto;
-      }
-
-      .content {
+      .container {
         padding: 20px;
       }
     }
@@ -163,91 +130,81 @@
 </head>
 <body>
 
-  <div class="sidebar">
-    <h3>Nurse Panel</h3>
-    <a href="#">Dashboard</a>
-    <a href="#">My Profile</a>
-    <a href="#">Help</a>
-    <a href="#">Settings</a>
-  </div>
+  <header>
+    <h1>NyumbaniCare</h1>
+    <p>We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
+  </header>
 
-  <div class="main-content">
-    <header>
-      <h1>NyumbaniCare</h1>
-      <p>We bring quality healthcare to your doorstep — safe, fast, and affordable.</p>
-    </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="About.html">About Us</a>
+    <a href="Care.html">Request Care</a>
+    <a href="#contact">Contact</a>
+    <a href="Nurse.html" class="active">Register</a>
+  </nav>
 
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="About.html">About Us</a>
-      <a href="Care.html">Request Care</a>
-      <a href="#contact">Contact</a>
-      <a href="Nurse.html" class="active">Register</a>
-    </nav>
+  <div class="container">
+    <h2 style="color: #007b5e;">Nurse Registration</h2>
+    <p class="description">Please fill in the details below to register as a nurse for NyumbaniCare. We look forward to working with you!</p>
 
-    <div class="content">
-      <h2 style="color: #007b5e;">Nurse Registration</h2>
-      <p class="description">Please fill in the details below to register as a nurse for NyumbaniCare. We look forward to working with you!</p>
+    <form id="nurseForm">
+      <div class="form-group">
+        <label for="fullname">Full Name *</label>
+        <input type="text" id="fullname" name="fullname" required />
+      </div>
 
-      <form id="nurseForm">
-        <div class="form-group">
-          <label for="fullname">Full Name *</label>
-          <input type="text" id="fullname" name="fullname" required />
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" name="phone" required />
+      </div>
+
+      <div class="form-group">
+        <label>Qualifications *</label>
+        <div class="radio-group">
+          <label><input type="radio" name="qualification" value="Certificate" required /> Certificate</label>
+          <label><input type="radio" name="qualification" value="Diploma" /> Diploma</label>
+          <label><input type="radio" name="qualification" value="Degree" /> Degree</label>
+          <label><input type="radio" name="qualification" value="Masters" /> Masters</label>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label for="email">Email Address *</label>
-          <input type="email" id="email" name="email" required />
+      <div class="form-group">
+        <label>Specialization *</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="specialization" value="Neonatal Care" /> Neonatal Care</label>
+          <label><input type="checkbox" name="specialization" value="Maternity Care" /> Maternity Care</label>
+          <label><input type="checkbox" name="specialization" value="General Nursing" /> General Nursing</label>
+          <label><input type="checkbox" name="specialization" value="Pediatrics" /> Pediatrics</label>
+          <label><input type="checkbox" name="specialization" value="Geriatric Care" /> Geriatric Care</label>
+          <label><input type="checkbox" name="specialization" value="Physiotherapy" /> Physiotherapy</label>
+          <label><input type="checkbox" name="specialization" value="Mental Health" /> Mental Health</label>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label for="phone">Phone Number *</label>
-          <input type="tel" id="phone" name="phone" required />
+      <div class="form-group">
+        <label>Availability *</label>
+        <div class="radio-group">
+          <label><input type="radio" name="availability" value="Full Time" required /> Full Time</label>
+          <label><input type="radio" name="availability" value="Part Time" /> Part Time</label>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label>Qualifications *</label>
-          <div class="radio-group">
-            <label><input type="radio" name="qualification" value="Certificate" required /> Certificate</label>
-            <label><input type="radio" name="qualification" value="Diploma" /> Diploma</label>
-            <label><input type="radio" name="qualification" value="Degree" /> Degree</label>
-            <label><input type="radio" name="qualification" value="Masters" /> Masters</label>
-          </div>
-        </div>
+      <div class="form-group">
+        <label>Proof of Profession *</label>
+        <input type="file" id="nursing_id" name="nursing_id" accept=".jpg,.png,.pdf" /><br> Nursing ID (for students)<br><br>
+        <input type="file" id="nursing_certificate" name="nursing_certificate" accept=".jpg,.png,.pdf" /><br> Nursing Certificate<br><br>
+        <input type="file" id="nursing_license" name="nursing_license" accept=".jpg,.png,.pdf" /><br> Nursing License<br><br>
+        <label>(Optional)</label>
+        <input type="file" name="resume" accept=".pdf,.doc,.docx" /> Upload Resume or Recommendation Letter
+      </div>
 
-        <div class="form-group">
-          <label>Specialization *</label>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="specialization" value="Neonatal Care" /> Neonatal Care</label>
-            <label><input type="checkbox" name="specialization" value="Maternity Care" /> Maternity Care</label>
-            <label><input type="checkbox" name="specialization" value="General Nursing" /> General Nursing</label>
-            <label><input type="checkbox" name="specialization" value="Pediatrics" /> Pediatrics</label>
-            <label><input type="checkbox" name="specialization" value="Geriatric Care" /> Geriatric Care</label>
-            <label><input type="checkbox" name="specialization" value="Physiotherapy" /> Physiotherapy</label>
-            <label><input type="checkbox" name="specialization" value="Mental Health" /> Mental Health</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Availability *</label>
-          <div class="radio-group">
-            <label><input type="radio" name="availability" value="Full Time" required /> Full Time</label>
-            <label><input type="radio" name="availability" value="Part Time" /> Part Time</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Proof of Profession *</label>
-          <input type="file" id="nursing_id" name="nursing_id" accept=".jpg,.png,.pdf" /><br> Nursing ID (for students)<br><br>
-          <input type="file" id="nursing_certificate" name="nursing_certificate" accept=".jpg,.png,.pdf" /><br> Nursing Certificate<br><br>
-          <input type="file" id="nursing_license" name="nursing_license" accept=".jpg,.png,.pdf" /><br> Nursing License<br><br>
-          <label>(Optional)</label>
-          <input type="file" name="resume" accept=".pdf,.doc,.docx" /> Upload Resume or Recommendation Letter
-        </div>
-
-        <button type="submit" class="submit-btn">Submit Registration</button>
-      </form>
-    </div>
+      <button type="submit" class="submit-btn">Submit Registration</button>
+    </form>
   </div>
 
   <script>
@@ -264,4 +221,4 @@
   </script>
 
 </body>
-              </html>
+          </html>
