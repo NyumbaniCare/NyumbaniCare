@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - NyumbaniCare</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7f9fc;
+      color: #333;
+      display: flex;
+      min-height: 100vh;
+      flex-direction: row;
+    }
+    /* Sidenav styles on the right */
+    .sidenav {
+      height: 100vh;
+      width: 220px;
+      background-color: #0d6efd;
+      padding-top: 40px;
+      position: fixed;
+      right: 0;
+      top: 0;
+      overflow-x: hidden;
+      box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    }
+    .sidenav a {
+      padding: 12px 24px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #fff;
+      display: block;
+      margin-bottom: 10px;
+      border-right: 4px solid transparent;
+      transition: 0.3s;
+    }
+    .sidenav a:hover {
+      background-color: #0056b3;
+      border-right: 4px solid #ffc107;
+      color: #fff;
+    }
+    .sidenav a.active {
+      background-color: #ffc107;
+      color: #0d6efd;
+      border-right: 4px solid #0d6efd;
+      font-weight: 700;
+    }
+
+    /* Main content styles */
+    .main-content {
+      margin-right: 220px;
+      padding: 40px;
+      max-width: 800px;
+      flex-grow: 1;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+    h1 {
+      font-weight: 700;
+      color: #0d6efd;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #0d6efd;
+      padding-bottom: 8px;
+    }
+    p {
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-weight: 600;
+      color: #0d6efd;
+      margin-top: 30px;
+      margin-bottom: 12px;
+      font-size: 1.2em;
+      border-left: 4px solid #0d6efd;
+      padding-left: 8px;
+    }
+    .contact-info p {
+      margin: 6px 0;
+    }
+    .contact-info strong {
+      color: #0d6efd;
+    }
+    .footer-note {
+      margin-top: 40px;
+      font-style: italic;
+      font-size: 0.9em;
+      color: #555;
+      text-align: center;
+    }
+
+    /* Responsive for small screens */
+    @media screen and (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      .sidenav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-shadow: none;
+        padding-top: 10px;
+        right: 0;
+      }
+      .sidenav a {
+        float: left;
+        padding: 10px;
+        font-size: 16px;
+        border-right: none;
+        margin-right: 10px;
+      }
+      .main-content {
+        margin: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 20px;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="main-content">
+    <h1>Contact Us</h1>
+    <p>At NyumbaniCare, we're dedicated to providing quality home-based healthcare services across Tanzania. Whether you're seeking medical assistance, have inquiries about our services, or wish to provide feedback, we're here to assist you.</p>
+    
+    <div class="contact-info">
+      <div>
+        <h2 class="section-title">📱 Phone Support</h2>
+        <p><strong>General Inquiries:</strong> +255 611 069 297</p>
+        <p><strong>WhatsApp Support:</strong> +255 740 489 863</p>
+        <p>Our support lines are available Monday to Saturday, 8:00 AM – 6:00 PM EAT.</p>
+      </div>
+
+      <div>
+        <h2 class="section-title">📧 Email</h2>
+        <p><strong>General Information & Support:</strong> carenyumbani@gmail.com</p>
+        <p>We aim to respond to all emails within 12 hours.</p>
+      </div>
+
+      <div>
+        <h2 class="section-title">📍 Physical Address</h2>
+        <p>NyumbaniCare Headquarters</p>
+        <p>P.O. Box 65005</p>
+        <p>Dar es Salaam, Tanzania</p>
+        <p>Our central operations are based in Dar es Salaam, with our primary care services anchored at the renowned Muhimbili National Hospital.</p>
+      </div>
+
+      <div>
+        <h2 class="section-title">🕒 Operating Hours</h2>
+        <p>Monday – Friday: 8:00 AM – 6:00 PM</p>
+        <p>Saturday & Sunday: 9:00 AM – 4:00 PM</p>
+        <p>Public Holidays: Closed</p>
+      </div>
+
+      <div>
+        <h2 class="section-title">🌐 Connect With Us</h2>
+        <p>Stay updated with our latest services and health tips</p>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      Thank you for choosing NyumbaniCare.
+    </div>
+  </main>
+
+  <nav class="sidenav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="request-care.html">Request Care</a>
+    <a href="contact.html" class="active">Contact Us</a>
+  </nav>
+
+</body>
+  </html>l
