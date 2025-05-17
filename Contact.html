@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact Us - NyumbaniCare</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     body {
       margin: 0;
@@ -15,7 +16,6 @@
       flex-direction: row;
     }
 
-    /* Sidenav styles */
     .sidenav {
       height: 100%;
       width: 220px;
@@ -49,7 +49,6 @@
       font-weight: bold;
     }
 
-    /* Main content styles */
     .main-content {
       margin-right: 220px;
       padding: 40px;
@@ -83,6 +82,16 @@
       margin: 6px 0;
     }
 
+    .contact-info a {
+      color: #0d6efd;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
     .footer-note {
       margin-top: 40px;
       font-style: italic;
@@ -91,7 +100,6 @@
       text-align: center;
     }
 
-    /* Mobile menu icon */
     .menu-icon {
       display: none;
       position: fixed;
@@ -106,7 +114,6 @@
       cursor: pointer;
     }
 
-    /* Close button inside sidenav (for mobile) */
     .sidenav .closebtn {
       position: absolute;
       top: 10px;
@@ -117,7 +124,6 @@
       display: none;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       body {
         flex-direction: column;
@@ -169,14 +175,27 @@
     <div class="contact-info">
       <div>
         <h2 class="section-title">📱 Phone Support</h2>
-        <p><strong>General Inquiries:</strong> +255 611 069 297</p>
-        <p><strong>WhatsApp Support:</strong> +255 740 489 863</p>
+        <p>
+          <strong>General Inquiries:</strong>
+          <a href="tel:+255611069297">
+            <i class="fas fa-phone"></i> +255 611 069 297
+          </a>
+        </p>
+        <p>
+          <strong>WhatsApp Support:</strong>
+          <a href="https://wa.me/255740489863" target="_blank">
+            <i class="fab fa-whatsapp" style="color: green;"></i> +255 740 489 863
+          </a>
+        </p>
         <p>Our support lines are available Monday to Saturday, 8:00 AM – 6:00 PM EAT.</p>
       </div>
 
       <div>
         <h2 class="section-title">📧 Email</h2>
-        <p><strong>General Information & Support:</strong> carenyumbani@gmail.com</p>
+        <p>
+          <strong>General Information & Support:</strong>
+          <a href="mailto:carenyumbani@gmail.com">carenyumbani@gmail.com</a>
+        </p>
         <p>We aim to respond to all emails within 12 hours.</p>
       </div>
 
