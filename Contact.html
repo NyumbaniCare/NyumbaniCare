@@ -4,12 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact Us - NyumbaniCare</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
+    :root {
+      --primary: #001f3f; /* Navy blue */
+      --accent: #ffc107;
+      --light-bg: #f7f9fc;
+      --white: #fff;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f7f9fc;
+      background: var(--light-bg);
       color: #333;
       min-height: 100vh;
       display: flex;
@@ -20,11 +27,11 @@
       height: 100%;
       width: 220px;
       position: fixed;
-      right: 0;
       top: 0;
-      background-color: #0d6efd;
+      left: 0;
+      background-color: var(--primary);
       padding-top: 60px;
-      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
       transition: 0.3s;
       z-index: 999;
     }
@@ -33,48 +40,48 @@
       padding: 14px 24px;
       text-decoration: none;
       font-size: 18px;
-      color: #fff;
+      color: var(--white);
       display: block;
       transition: 0.3s;
     }
 
     .sidenav a:hover {
-      background-color: #0056b3;
-      border-right: 4px solid #ffc107;
+      background-color: #003366;
+      border-left: 4px solid var(--accent);
     }
 
     .sidenav a.active {
-      background-color: #ffc107;
-      color: #0d6efd;
+      background-color: var(--accent);
+      color: var(--primary);
       font-weight: bold;
     }
 
     .main-content {
-      margin-right: 220px;
+      margin-left: 220px;
       padding: 40px;
       max-width: 800px;
       flex-grow: 1;
-      background: #fff;
+      background: var(--white);
       border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       margin: 60px auto;
     }
 
     h1 {
       font-weight: 700;
-      color: #0d6efd;
+      color: var(--primary);
       margin-bottom: 20px;
-      border-bottom: 3px solid #0d6efd;
+      border-bottom: 3px solid var(--primary);
       padding-bottom: 8px;
     }
 
     .section-title {
       font-weight: 600;
-      color: #0d6efd;
+      color: var(--primary);
       margin-top: 30px;
       margin-bottom: 10px;
       font-size: 1.2em;
-      border-left: 4px solid #0d6efd;
+      border-left: 4px solid var(--primary);
       padding-left: 10px;
     }
 
@@ -83,7 +90,7 @@
     }
 
     .contact-info a {
-      color: #0d6efd;
+      color: var(--primary);
       text-decoration: none;
       font-weight: 600;
     }
@@ -104,9 +111,9 @@
       display: none;
       position: fixed;
       top: 15px;
-      right: 20px;
+      left: 20px;
       font-size: 28px;
-      background-color: #0d6efd;
+      background-color: var(--primary);
       color: white;
       padding: 8px 12px;
       border-radius: 5px;
@@ -137,13 +144,9 @@
 
       .sidenav {
         width: 0;
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100%;
-        overflow-x: hidden;
-        transition: 0.3s;
+        left: 0;
         padding-top: 60px;
+        overflow-x: hidden;
       }
 
       .sidenav .closebtn {
@@ -153,13 +156,19 @@
       .menu-icon {
         display: block;
       }
+
+      .main-content {
+        margin-left: 0;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Sidebar toggle icon -->
   <div class="menu-icon" onclick="openNav()">☰</div>
 
+  <!-- Sidebar Navigation -->
   <nav id="mySidenav" class="sidenav">
     <span class="closebtn" onclick="closeNav()">×</span>
     <a href="index.html">Home</a>
@@ -168,6 +177,7 @@
     <a href="contact.html" class="active">Contact Us</a>
   </nav>
 
+  <!-- Main Content -->
   <main class="main-content">
     <h1>Contact Us</h1>
     <p>At NyumbaniCare, we're dedicated to providing quality home-based healthcare services across Tanzania. Whether you're seeking medical assistance, have inquiries about our services, or wish to provide feedback, we're here to assist you.</p>
@@ -225,6 +235,7 @@
     </div>
   </main>
 
+  <!-- Toggle Scripts -->
   <script>
     function openNav() {
       document.getElementById("mySidenav").style.width = "220px";
@@ -236,4 +247,4 @@
   </script>
 
 </body>
-                                                     </html>
+      </html>
