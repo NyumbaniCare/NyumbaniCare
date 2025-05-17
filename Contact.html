@@ -10,42 +10,43 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f7f9fc;
       color: #333;
-      display: flex;
       min-height: 100vh;
+      display: flex;
       flex-direction: row;
     }
-    /* Sidenav styles on the right */
+
+    /* Sidenav styles */
     .sidenav {
-      height: 100vh;
+      height: 100%;
       width: 220px;
-      background-color: #0d6efd;
-      padding-top: 40px;
       position: fixed;
       right: 0;
       top: 0;
-      overflow-x: hidden;
-      box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+      background-color: #0d6efd;
+      padding-top: 60px;
+      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+      z-index: 999;
     }
+
     .sidenav a {
-      padding: 12px 24px;
+      padding: 14px 24px;
       text-decoration: none;
       font-size: 18px;
       color: #fff;
       display: block;
-      margin-bottom: 10px;
-      border-right: 4px solid transparent;
       transition: 0.3s;
     }
+
     .sidenav a:hover {
       background-color: #0056b3;
       border-right: 4px solid #ffc107;
-      color: #fff;
     }
+
     .sidenav a.active {
       background-color: #ffc107;
       color: #0d6efd;
-      border-right: 4px solid #0d6efd;
-      font-weight: 700;
+      font-weight: bold;
     }
 
     /* Main content styles */
@@ -57,9 +58,9 @@
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      margin-top: 40px;
-      margin-bottom: 40px;
+      margin: 60px auto;
     }
+
     h1 {
       font-weight: 700;
       color: #0d6efd;
@@ -67,25 +68,21 @@
       border-bottom: 3px solid #0d6efd;
       padding-bottom: 8px;
     }
-    p {
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
+
     .section-title {
       font-weight: 600;
       color: #0d6efd;
       margin-top: 30px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-size: 1.2em;
       border-left: 4px solid #0d6efd;
-      padding-left: 8px;
+      padding-left: 10px;
     }
+
     .contact-info p {
       margin: 6px 0;
     }
-    .contact-info strong {
-      color: #0d6efd;
-    }
+
     .footer-note {
       margin-top: 40px;
       font-style: italic;
@@ -94,42 +91,81 @@
       text-align: center;
     }
 
-    /* Responsive for small screens */
-    @media screen and (max-width: 768px) {
+    /* Mobile menu icon */
+    .menu-icon {
+      display: none;
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      background-color: #0d6efd;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 5px;
+      z-index: 1000;
+      cursor: pointer;
+    }
+
+    /* Close button inside sidenav (for mobile) */
+    .sidenav .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
       body {
         flex-direction: column;
       }
-      .sidenav {
-        width: 100%;
-        height: auto;
-        position: relative;
-        box-shadow: none;
-        padding-top: 10px;
-        right: 0;
-      }
-      .sidenav a {
-        float: left;
-        padding: 10px;
-        font-size: 16px;
-        border-right: none;
-        margin-right: 10px;
-      }
+
       .main-content {
-        margin: 0;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin: 80px 20px 30px;
         padding: 20px;
         max-width: 100%;
+      }
+
+      .sidenav {
+        width: 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        overflow-x: hidden;
+        transition: 0.3s;
+        padding-top: 60px;
+      }
+
+      .sidenav .closebtn {
+        display: block;
+      }
+
+      .menu-icon {
+        display: block;
       }
     }
   </style>
 </head>
 <body>
 
+  <div class="menu-icon" onclick="openNav()">☰</div>
+
+  <nav id="mySidenav" class="sidenav">
+    <span class="closebtn" onclick="closeNav()">×</span>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="request-care.html">Request Care</a>
+    <a href="contact.html" class="active">Contact Us</a>
+  </nav>
+
   <main class="main-content">
     <h1>Contact Us</h1>
     <p>At NyumbaniCare, we're dedicated to providing quality home-based healthcare services across Tanzania. Whether you're seeking medical assistance, have inquiries about our services, or wish to provide feedback, we're here to assist you.</p>
-    
+
     <div class="contact-info">
       <div>
         <h2 class="section-title">📱 Phone Support</h2>
@@ -161,7 +197,7 @@
 
       <div>
         <h2 class="section-title">🌐 Connect With Us</h2>
-        <p>Stay updated with our latest services and health tips</p>
+        <p>Stay updated with our latest services and health tips.</p>
       </div>
     </div>
 
@@ -170,12 +206,15 @@
     </div>
   </main>
 
-  <nav class="sidenav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="request-care.html">Request Care</a>
-    <a href="contact.html" class="active">Contact Us</a>
-  </nav>
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "220px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
 
 </body>
-  </html>l
+  </html>
