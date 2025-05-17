@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - NyumbaniCare</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #66c2cc, #2a75bd);
+      color: #333;
+    }
+
+    .menu-icon {
+      font-size: 30px;
+      cursor: pointer;
+      padding: 10px 20px;
+      background: #333;
+      color: white;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1001;
+      border-radius: 8px;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      background-color: #333;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidenav a {
+      padding: 12px 24px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+    }
+
+    .sidenav a:hover {
+      background-color: #444;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      color: white;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 100px auto 40px;
+      padding: 30px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2a75bd;
+    }
+
+    h2 {
+      color: #FF6F61;
+      margin-top: 40px;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    ul {
+      list-style: square;
+      padding-left: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        margin: 80px 15px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <span class="menu-icon" onclick="openNav()">☰</span>
+
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="request.html">Request Care</a>
+    <a href="nurse.html">Nurse Registration</a>
+    <a href="payments.html">Payments</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="content">
+    <h1>About NyumbaniCare</h1>
+    <p><strong>NyumbaniCare</strong> is a dedicated home-based healthcare service provider bringing compassionate, high-quality medical care directly to your doorstep.</p>
+
+    <h2>Our Mission</h2>
+    <p>To make healthcare accessible, personalized, and reliable by delivering professional nursing and medical services to patients at the comfort of their homes.</p>
+
+    <h2>Our Vision</h2>
+    <p>To be the most trusted home care solution in Kenya and beyond, transforming lives through dignity, respect, and expert care.</p>
+
+    <h2>Why NyumbaniCare?</h2>
+    <ul>
+      <li>Registered and experienced healthcare professionals</li>
+      <li>Wide range of care services: maternity, pediatrics, elderly care, mental health & more</li>
+      <li>Flexible options: full-time and part-time care</li>
+      <li>Affordable, safe, and confidential service delivery</li>
+    </ul>
+
+    <h2>Our Team</h2>
+    <p>We are proud of our team of dedicated nurses and caregivers who are not only qualified but passionate about serving the community. Each caregiver is thoroughly vetted, trained, and supported to ensure excellent care outcomes.</p>
+
+    <h2>Contact Us</h2>
+    <p>Ready to get in touch or learn more? Visit our <a href="contact.html" style="color: #2a75bd; font-weight: bold;">Contact Page</a> or call us directly for more info!</p>
+  </div>
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
+
+</body>
+</html>
