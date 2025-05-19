@@ -5,7 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nyumbani Care - Home</title>
   <style>
-    /* [All your CSS styles go here — unchanged from your version] */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .toggle-btn {
+      font-size: 24px;
+      padding: 10px;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      background: #2c3e50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 999;
+    }
+    .sidebar h2 {
+      color: #ecf0f1;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar ul li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px 0;
+    }
+    .hero {
+      background-color: #3498db;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      transition: margin-left 0.3s ease;
+    }
+    .content-section {
+      margin-bottom: 30px;
+    }
+    .review-section {
+      margin-top: 50px;
+    }
+    form input, form textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+    .stars input[type="radio"] {
+      display: none;
+    }
+    .stars label {
+      font-size: 24px;
+      color: gray;
+      cursor: pointer;
+    }
+    .stars input[type="radio"]:checked ~ label {
+      color: gold;
+    }
+    .review-list-container {
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .review-item {
+      display: inline-block;
+      border: 1px solid #ddd;
+      margin-right: 10px;
+      padding: 10px;
+      width: 200px;
+    }
   </style>
 </head>
 <body>
@@ -46,16 +131,11 @@
         <textarea id="review" rows="4" placeholder="Your Review" required></textarea>
 
         <div class="stars">
-          <input type="radio" name="rating" id="star1" value="1" />
-          <label for="star1">&#9733;</label>
-          <input type="radio" name="rating" id="star2" value="2" />
-          <label for="star2">&#9733;</label>
-          <input type="radio" name="rating" id="star3" value="3" />
-          <label for="star3">&#9733;</label>
-          <input type="radio" name="rating" id="star4" value="4" />
-          <label for="star4">&#9733;</label>
-          <input type="radio" name="rating" id="star5" value="5" />
-          <label for="star5">&#9733;</label>
+          <input type="radio" name="rating" id="star5" value="5" /><label for="star5">&#9733;</label>
+          <input type="radio" name="rating" id="star4" value="4" /><label for="star4">&#9733;</label>
+          <input type="radio" name="rating" id="star3" value="3" /><label for="star3">&#9733;</label>
+          <input type="radio" name="rating" id="star2" value="2" /><label for="star2">&#9733;</label>
+          <input type="radio" name="rating" id="star1" value="1" /><label for="star1">&#9733;</label>
         </div>
 
         <button type="submit">Submit Review</button>
@@ -70,8 +150,9 @@
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
   <script>
-    // Your Firebase config
+    // Your Firebase Config (replace with your real values)
     const firebaseConfig = {
       apiKey: "AIzaSyByBtpgNSXWR3-R3pzL8BA6SF02K3REJO0",
       authDomain: "nyumbanicare-b3871.firebaseapp.com",
@@ -82,7 +163,6 @@
       measurementId: "G-8D34WT1EJT"
     };
 
-    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
   </script>
@@ -107,7 +187,6 @@
 
     const reviewForm = document.getElementById("review-form");
     const reviewList = document.getElementById("review-list");
-    const reviewListContainer = document.getElementById("review-list-container");
 
     reviewForm.addEventListener("submit", async function (event) {
       event.preventDefault();
@@ -121,54 +200,32 @@
         return;
       }
 
-      try {
-        // Save review to Firebase Firestore
-        await db.collection("reviews").add({
-          email,
-          review,
-          rating: parseInt(rating.value),
-          createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        });
+      await db.collection("reviews").add({
+        email,
+        review,
+        rating: parseInt(rating.value),
+        createdAt: new Date()
+      });
 
-        alert("Review submitted!");
-        reviewForm.reset();
-        loadReviews();
-      } catch (error) {
-        alert("Error submitting review: " + error.message);
-      }
+      alert("Review submitted!");
+      reviewForm.reset();
+      loadReviews();
     });
 
     async function loadReviews() {
-      reviewList.innerHTML = "Loading reviews...";
-
-      try {
-        const snapshot = await db.collection("reviews")
-          .orderBy("createdAt", "desc")
-          .limit(10)
-          .get();
-
-        if (snapshot.empty) {
-          reviewList.innerHTML = "<p>No reviews yet.</p>";
-          return;
-        }
-
-        reviewList.innerHTML = "";
-        snapshot.forEach(doc => {
-          const data = doc.data();
-          const stars = "★".repeat(data.rating) + "☆".repeat(5 - data.rating);
-          const reviewItem = document.createElement("div");
-          reviewItem.classList.add("review-item");
-          reviewItem.innerHTML = `<h4>${data.email}</h4><p>${data.review}</p><p>${stars}</p>`;
-          reviewList.appendChild(reviewItem);
-        });
-
-        reviewListContainer.scrollLeft = reviewList.scrollWidth;
-      } catch (error) {
-        reviewList.innerHTML = `<p>Error loading reviews: ${error.message}</p>`;
-      }
+      reviewList.innerHTML = "";
+      const snapshot = await db.collection("reviews").orderBy("createdAt", "desc").get();
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const stars = "★".repeat(data.rating) + "☆".repeat(5 - data.rating);
+        const reviewItem = document.createElement("div");
+        reviewItem.classList.add("review-item");
+        reviewItem.innerHTML = `<h4>${data.email}</h4><p>${data.review}</p><p>${stars}</p>`;
+        reviewList.appendChild(reviewItem);
+      });
     }
 
     window.onload = loadReviews;
   </script>
 </body>
-              </html>
+    </html>
